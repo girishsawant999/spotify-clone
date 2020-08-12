@@ -28,12 +28,22 @@ function App() {
       spotify
         .getMe()
         .then((user) => dispatch({ type: actions.SET_USER, payload: user }));
+
+      spotify
+        .getUserPlaylists()
+        .then((playlists) =>
+          dispatch({ type: actions.SET_PLAYLIST, payload: playlists })
+        );
     }
 
     return () => {};
   }, []);
 
-  return <div className="app">{token ? <Player /> : <Login />}</div>;
+  return (
+    <div className="app">
+      {token ? <Player spotify={spotify} /> : <Login />}
+    </div>
+  );
 }
 
 export default App;
