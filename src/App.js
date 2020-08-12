@@ -10,20 +10,26 @@ import * as actions from './actionTypes';
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [token, setToken] = useState(null);
-  const [{ user }, dispatch] = useDataLayerValue();
+  const [{ user, token }, dispatch] = useDataLayerValue();
 
   useEffect(() => {
     const hash = getUrlToken();
     const _token = hash.access_token;
     window.location.hash = '';
+
     if (_token) {
-      setToken(_token);
+      dispatch({
+        type: actions.SET_TOKEN,
+        payload: _token,
+      });
+
       spotify.setAccessToken(_token);
+
       spotify
         .getMe()
         .then((user) => dispatch({ type: actions.SET_USER, payload: user }));
     }
+
     return () => {};
   }, []);
 
