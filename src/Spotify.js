@@ -1,6 +1,6 @@
 let activeServer = 'dev';
 if (window.location.host.includes('g-spotify')) {
-  activeServer = ' live';
+  activeServer = 'live';
 }
 
 export const authEndPoint = 'https://accounts.spotify.com/authorize';
@@ -19,7 +19,7 @@ const scopes = [
   'user-top-read',
   'user-modify-playback-state',
 ];
-
+console.log('object',  redirectUrl[activeServer]);
 export const loginUrl = `${authEndPoint}?client_id=${clientId}&redirect_uri=${
   redirectUrl[activeServer]
 }&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
