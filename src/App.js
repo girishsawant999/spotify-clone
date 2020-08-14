@@ -34,6 +34,29 @@ function App() {
         .then((playlists) =>
           dispatch({ type: actions.SET_PLAYLIST, payload: playlists })
         );
+
+      spotify.getCategories().then((categories) => {
+        dispatch({
+          type: actions.SET_CATEGORIES,
+          payload: categories.categories,
+        });
+      });
+
+      spotify.getCategoryPlaylists('toplists').then((currentCategory) => {
+        dispatch({
+          type: actions.SET_CURRENT_CATEGORY,
+          payload: currentCategory,
+        });
+      });
+
+      spotify.getMyRecentlyPlayedTracks().then((recentTracks) => {
+        dispatch({ type: actions.SET_RECENT_TRACKS, payload: recentTracks });
+      });
+
+      spotify.getNewReleases({ country: 'IN' }).then((newReleases) => {
+        console.log('newReleases', newReleases);
+        // dispatch({ type: actions.SET_CATEGORIES, payload: newReleases });
+      });
     }
 
     return () => {};

@@ -1,0 +1,45 @@
+.trackcard {
+  height: fit-content;
+  width: 10vw;
+  padding: 20px;
+  background-color: hsl(0deg 0% 16%);
+  border-radius: 15px;
+  position: relative;
+}
+.trackcard > img {
+  width: inherit;
+  margin-bottom: 10px;
+}
+.trackcard > h4 {
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 10px;
+}
+.trackcard > p {
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: x-small;
+  margin-bottom: 5px;
+}
+
+.trackcard .playIcon {
+  position: absolute;
+  display: flex;
+  right: 1vw;
+  bottom: 15px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #1db954;
+  border-radius: 100px;
+  padding: 2px;
+  transition: opacity 100ms ease-in-out;
+  transition: visibility 100ms ease-in;
+  opacity: 0;
+}
+.trackcard .playIcon svg {
+  font-size: xx-large;
+}
+.trackcard .playIcon:hover {
+  transform: scale(1.1);
+}

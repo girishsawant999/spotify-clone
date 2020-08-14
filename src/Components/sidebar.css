@@ -5,6 +5,7 @@
   min-width: 230px;
   padding: 10px;
   background-color: #040404;
+  overflow: overlay;
 }
 
 .sidebar > svg {
