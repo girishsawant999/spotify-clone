@@ -54,7 +54,6 @@ function App() {
       });
 
       spotify.getNewReleases({ country: 'IN' }).then((newReleases) => {
-        console.log('newReleases', newReleases);
         // dispatch({ type: actions.SET_CATEGORIES, payload: newReleases });
       });
     }

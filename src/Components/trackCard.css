@@ -27,7 +27,7 @@
 .trackcard .playIcon {
   position: absolute;
   display: flex;
-  right: 1vw;
+  right: 15px;
   bottom: 15px;
   justify-content: center;
   align-items: center;
