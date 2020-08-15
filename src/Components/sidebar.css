@@ -6,6 +6,7 @@
   padding: 10px;
   background-color: #040404;
   overflow: overlay;
+  transition: display 200ms ease-in-out;
 }
 
 .sidebar > svg {

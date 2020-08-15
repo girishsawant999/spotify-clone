@@ -13,9 +13,11 @@ function BodyHeader(props) {
       if(document.getElementById('sidebar').style.display === 'none') {
         document.getElementById('sidebar').style.display = 'block';
         document.getElementById('searchInput').style.display = 'none';
+        document.getElementById('header__user').style.display = 'none';
       } else {
         document.getElementById('sidebar').style.display = 'none';
         document.getElementById('searchInput').style.display = 'flex';
+        document.getElementById('header__user').style.display = 'flex';
 
       }
 
@@ -39,7 +41,7 @@ function BodyHeader(props) {
           placeholder="Search songs, playlist, artists"
         />
       </div>
-      <div className="body__user">
+      <div id="header__user" className="body__user">
         <h4>{user?.display_name}</h4>
         {user?.images?.length ? (
           <img src={user?.images[0]} alt="" />
