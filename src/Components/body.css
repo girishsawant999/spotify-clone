@@ -14,7 +14,7 @@
 .body > h2 {
   margin: 15px 0px;
 }
-.body .trackCardsContainer{
+.body .trackCardsContainer {
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -34,6 +34,16 @@
   margin: 0px 10px;
   color: #808080;
 }
+.body__menu{
+  flex: 0.1 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(0deg 0% 16%);
+  padding: 10px;
+  border-radius: 100px;
+
+}
 .body__search > input {
   border: none;
   width: 100%;
@@ -41,7 +51,7 @@
 }
 .body__user {
   display: flex;
-  flex: 0.5 1;
+  flex: auto;
   justify-content: flex-end;
   align-items: center;
   background-color: black;
@@ -65,3 +75,11 @@
   padding-left: 10px;
 }
 
+@media (max-width: 768px) {
+  .body {
+    flex: auto;
+  }
+  .body__menu{
+    display: flex;
+  }
+}

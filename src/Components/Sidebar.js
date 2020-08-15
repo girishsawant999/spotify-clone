@@ -9,7 +9,7 @@ import { useDataLayerValue } from '../DataLayer';
 function Sidebar(props) {
   const [{ playlists, categories }, dispatch] = useDataLayerValue();
   return (
-    <div className="sidebar">
+    <div id="sidebar" className="sidebar">
       <svg viewBox="0 0 1134 340" class="spotify-logo--text">
         <title>Spotify</title>
         <path
