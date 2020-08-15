@@ -9,6 +9,7 @@ import CloseIcon from '@material-ui/icons/Close';
 function BodyHeader(props) {
   const [{ user }, dispatch] = useDataLayerValue();
   const [menuOpen, setmenuOpen] = useState(false);
+  
   useEffect(() => {
     const menuBtn = document.getElementById('menuBtn');
     menuBtn.addEventListener('click', () => {

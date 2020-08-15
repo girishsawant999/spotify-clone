@@ -9,15 +9,50 @@ import Slider from '@material-ui/core/Slider';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import VolumeUp from '@material-ui/icons/VolumeUp';
 import { useDataLayerValue } from '../DataLayer';
+import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 
+let audio = null;
 function Footer(props) {
   const [{ recentTracks }, dispatch] = useDataLayerValue();
   const [value, setValue] = useState(30);
   const [trackIndex, settrackIndex] = useState(0);
+  const [play, setplay] = useState(false);
+
+  const playTrack = (state) => {
+    if (state) {
+      audio = new Audio(recentTracks?.items[trackIndex]?.track?.preview_url);
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  };
+
+  const skipTrack = (next) => {
+    if (next) {
+      if (trackIndex !== recentTracks?.items?.length - 1) {
+        if (audio) playTrack(false);
+        settrackIndex(trackIndex + 1);
+        setplay(true);
+      }
+    } else {
+      if (trackIndex !== 0) {
+        if (audio) playTrack(false);
+        settrackIndex(trackIndex - 1);
+        setplay(true);
+      }
+    }
+  };
 
   useEffect(() => {
+    if (play) {
+      playTrack(play);
+    } else {
+      if (audio) playTrack(play);
+    }
+
     return () => {};
-  }, []);
+  }, [play, trackIndex]);
+
   return (
     <div>
       {recentTracks?.items?.length && (
@@ -46,12 +81,22 @@ function Footer(props) {
                 if (trackIndex !== 0) settrackIndex(trackIndex - 1);
               }}
             />
-            <PlayCircleFilledIcon className="main" />
+            {play ? (
+              <PauseCircleFilledIcon
+                className="main"
+                onClick={() => setplay(false)}
+              />
+            ) : (
+              <PlayCircleFilledIcon
+                className="main"
+                onClick={() => setplay(true)}
+              />
+            )}
+
             <SkipNextIcon
               className="medium"
               onClick={() => {
-                if (trackIndex !== recentTracks?.items?.length - 1)
-                  settrackIndex(trackIndex + 1);
+                skipTrack(true);
               }}
             />
             <ShuffleIcon className="green" />
