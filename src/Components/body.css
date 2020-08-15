@@ -80,6 +80,7 @@
 @media (max-width: 768px) {
   .body {
     flex: auto;
+    padding: 5px;
   }
   .body__menu{
     display: flex;
