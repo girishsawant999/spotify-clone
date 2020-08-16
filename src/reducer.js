@@ -7,6 +7,10 @@ export const initialState = {
   categories: [],
   currentCategory: {},
   recentTracks: {},
+  currentTrack: {
+    state: false,
+    url: null,
+  },
 };
 
 export const reducer = (state, action) => {
@@ -24,6 +28,8 @@ export const reducer = (state, action) => {
       return { ...state, currentCategory: action.payload };
     case actions.SET_RECENT_TRACKS:
       return { ...state, recentTracks: action.payload };
+    case actions.SET_CURRENT_TRACK:
+      return { ...state, currentTrack: action.payload };
 
     default:
       return state;

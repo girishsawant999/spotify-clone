@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './footer.css';
+import * as actions from '../actionTypes';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
@@ -11,7 +12,6 @@ import VolumeUp from '@material-ui/icons/VolumeUp';
 import { useDataLayerValue } from '../DataLayer';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 
-let audio = null;
 function Footer(props) {
   const [{ recentTracks }, dispatch] = useDataLayerValue();
   const [value, setValue] = useState(30);
@@ -19,24 +19,23 @@ function Footer(props) {
   const [play, setplay] = useState(false);
 
   const playTrack = (state) => {
-    if (state) {
-      audio = new Audio(recentTracks?.items[trackIndex]?.track?.preview_url);
-      audio.play();
-    } else {
-      audio.pause();
-    }
+    dispatch({
+      type: actions.SET_CURRENT_TRACK,
+      payload: {
+        state,
+        url: recentTracks?.items[trackIndex]?.track?.preview_url,
+      },
+    });
   };
 
   const skipTrack = (next) => {
     if (next) {
       if (trackIndex !== recentTracks?.items?.length - 1) {
-        if (audio) playTrack(false);
         settrackIndex(trackIndex + 1);
         setplay(true);
       }
     } else {
       if (trackIndex !== 0) {
-        if (audio) playTrack(false);
         settrackIndex(trackIndex - 1);
         setplay(true);
       }
@@ -44,14 +43,11 @@ function Footer(props) {
   };
 
   useEffect(() => {
-    if (play) {
+    if (recentTracks?.items) {
       playTrack(play);
-    } else {
-      if (audio) playTrack(play);
     }
-
     return () => {};
-  }, [play, trackIndex]);
+  }, [play]);
 
   return (
     <div>
@@ -78,7 +74,7 @@ function Footer(props) {
             <SkipPreviousIcon
               className="medium"
               onClick={() => {
-                if (trackIndex !== 0) settrackIndex(trackIndex - 1);
+                skipTrack(false);
               }}
             />
             {play ? (

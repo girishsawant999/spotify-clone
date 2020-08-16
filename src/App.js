@@ -6,11 +6,12 @@ import Player from './Components/Player';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { useDataLayerValue } from './DataLayer';
 import * as actions from './actionTypes';
+import Audio from './Components/Audio';
 
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ user, token }, dispatch] = useDataLayerValue();
+  const [{ token, currentTrack }, dispatch] = useDataLayerValue();
 
   useEffect(() => {
     const hash = getUrlToken();
@@ -64,6 +65,7 @@ function App() {
   return (
     <div className="app">
       {token ? <Player spotify={spotify} /> : <Login />}
+      <Audio currentTrack={currentTrack} />
     </div>
   );
 }
