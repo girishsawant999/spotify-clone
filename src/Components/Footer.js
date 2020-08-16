@@ -78,7 +78,7 @@ function Footer(props) {
             <SkipPreviousIcon
               className="medium"
               onClick={() => {
-                if (trackIndex !== 0) settrackIndex(trackIndex - 1);
+                skipTrack(false);
               }}
             />
             {play ? (
