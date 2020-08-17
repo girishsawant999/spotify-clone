@@ -2,20 +2,26 @@ import React from 'react';
 import './body.css';
 import { useDataLayerValue } from '../DataLayer';
 import BodyHeader from './BodyHeader';
-import TrackCard from './TrackCard';
+import TrackCard from './TrackCardZero';
+import TracksContainer from './TracksContainer';
 
 function Body() {
-  const [{ recentTracks }, dispatch] = useDataLayerValue();
+  const [{ recentTracks, currentCategory }, dispatch] = useDataLayerValue();
 
   return (
     <div className="body">
       <BodyHeader />
-      <h2>Recently played</h2>
-      <div className="trackCardsContainer">
-        {recentTracks?.items?.map((item, index) => (
-          <TrackCard track={item} trackIndex={index} />
-        ))}
-      </div>
+      <TracksContainer
+        tracks={recentTracks}
+        name={'Recently Played'}
+        type={0}
+      />
+
+      <TracksContainer
+        tracks={currentCategory?.playlists}
+        name={'Top list'}
+        type={1}
+      />
     </div>
   );
 }

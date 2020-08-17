@@ -14,9 +14,11 @@ import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 let audio = null;
 function Footer(props) {
   const [{ recentTracks }, dispatch] = useDataLayerValue();
-  const [value, setValue] = useState(30);
+  const [value, setValue] = useState(0.3);
   const [trackIndex, settrackIndex] = useState(0);
   const [play, setplay] = useState(false);
+  const [shuffle, setshuffle] = useState(true);
+  const [repeat, setrepeat] = useState(true);
 
   const playTrack = (state) => {
     if (state) {
@@ -31,16 +33,26 @@ function Footer(props) {
     if (next) {
       if (trackIndex !== recentTracks?.items?.length - 1) {
         if (audio) playTrack(false);
-        settrackIndex(trackIndex + 1);
+        let r = getRandomInt(0, recentTracks?.items?.length - 1);
+        shuffle ? settrackIndex(r) : settrackIndex(trackIndex + 1);
         setplay(true);
+      } else if (repeat) {
+        settrackIndex(0);
       }
     } else {
       if (trackIndex !== 0) {
         if (audio) playTrack(false);
-        settrackIndex(trackIndex - 1);
+        let r = getRandomInt(0, recentTracks?.items?.length - 1);
+        shuffle ? settrackIndex(r) : settrackIndex(trackIndex - 1);
         setplay(true);
+      } else if (repeat) {
+        settrackIndex(recentTracks?.items?.length - 1);
       }
     }
+  };
+
+  const getRandomInt = (min, max) => {
+    return parseInt(Math.random() * (max - min) + min);
   };
 
   useEffect(() => {
@@ -74,7 +86,10 @@ function Footer(props) {
             </div>
           </div>
           <div className="footer__center">
-            <RepeatIcon className="green" />
+            <RepeatIcon
+              className={repeat ? 'green' : ''}
+              onClick={() => setrepeat(!repeat)}
+            />
             <SkipPreviousIcon
               className="medium"
               onClick={() => {
@@ -99,13 +114,19 @@ function Footer(props) {
                 skipTrack(true);
               }}
             />
-            <ShuffleIcon className="green" />
+            <ShuffleIcon
+              className={shuffle ? 'green' : ''}
+              onClick={() => setshuffle(!shuffle)}
+            />
           </div>
           <div className="footer__right">
             <VolumeOffIcon />
             <Slider
-              value={value}
-              onChange={(event, newValue) => setValue(newValue)}
+              value={value * 100}
+              onChange={(event, newValue) => {
+                if (audio) audio.volume = newValue / 100;
+                setValue(newValue / 100);
+              }}
               aria-labelledby="continuous-slider"
             />
             <VolumeUp />

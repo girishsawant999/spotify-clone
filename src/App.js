@@ -8,6 +8,9 @@ import { useDataLayerValue } from './DataLayer';
 import * as actions from './actionTypes';
 
 const spotify = new SpotifyWebApi();
+require('dotenv').config()
+process.env.CI = false
+console.log('process.env.CLIENT_ID :>> ', process.env.CLIENT_ID);
 
 function App() {
   const [{ user, token }, dispatch] = useDataLayerValue();

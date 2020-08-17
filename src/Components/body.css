@@ -5,6 +5,7 @@
   color: white;
   padding: 30px;
   overflow: overlay;
+  padding-bottom: 120px;
 }
 .body__header {
   display: flex;
@@ -21,6 +22,7 @@
   justify-content: space-between;
   gap: 10px;
   overflow-x: auto;
+  border-radius: 15px;
 }
 .body__search {
   flex: 0.5 1;
@@ -81,6 +83,7 @@
   .body {
     flex: auto;
     padding: 15px;
+    padding-bottom: 120px;
   }
   .body__menu{
     display: flex;

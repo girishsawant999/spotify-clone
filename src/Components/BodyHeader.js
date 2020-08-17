@@ -42,6 +42,7 @@ function BodyHeader(props) {
           name="search"
           id="search"
           placeholder="Search songs, playlist, artists"
+          autoComplete="off"
         />
       </div>
       <div id="header__user" className="body__user">
