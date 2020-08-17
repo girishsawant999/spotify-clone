@@ -10,7 +10,7 @@ const redirectUrl = {
   live: 'https://g-spotify.netlify.app/',
 };
 
-const clientId = 'f37312030e3d45b3b5aec568bc2618ea';
+const clientId =  process.env.REACT_APP_CLIENT_ID;
 
 const scopes = [
   'user-read-currently-playing',
