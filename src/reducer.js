@@ -1,7 +1,6 @@
 import * as actions from './actionTypes';
 export const initialState = {
   token: null,
-  // 'BQAKPfI82OCrrYVmY0QRhI1P6acnAwnJqv6GHuKyY8spttiEF5g_QFjPeT2WakBhcckPbXQ9LADp9GzQT34KLoTMu59epZDO8MJhWrL2zNXe_DKKoWjFimMEXzreV8vrgfviltCKYf0EfE7oQ9uf1BWPgomZB7zE5HASf0bFPQcFtIGQ',
   user: null,
   playlists: [],
   categories: [],
