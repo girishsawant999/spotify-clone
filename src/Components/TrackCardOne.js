@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import './trackCard.css';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import { Link } from 'react-router-dom';
 
 function TrackCard({ track, trackIndex }) {
+  console.log('track :>> ', track);
   useEffect(() => {
     document.getElementById(trackIndex).addEventListener('mouseover', (e) => {
       document.getElementById(`play-${trackIndex}`).style.opacity = 1;
@@ -18,14 +20,16 @@ function TrackCard({ track, trackIndex }) {
     };
   }, []);
   return (
-    <div id={trackIndex} className="trackcard">
-      <img src={track?.images[0]?.url} alt="" />
-      <h4>{track?.name}</h4>
-      <p>{track?.description}</p>
-      <span id={`play-${trackIndex}`} className="playIcon">
-        <PlayArrowIcon />
-      </span>
-    </div>
+    <Link to={`/category/${track?.id}`}>
+      <div id={trackIndex} className="trackcard">
+        <img src={track?.images[0]?.url} alt="" />
+        <h4>{track?.name}</h4>
+        <p>{track?.description}</p>
+        <span id={`play-${trackIndex}`} className="playIcon">
+          <PlayArrowIcon />
+        </span>
+      </div>
+    </Link>
   );
 }
 

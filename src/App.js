@@ -35,7 +35,7 @@ function App() {
           dispatch({ type: actions.SET_PLAYLIST, payload: playlists })
         );
 
-      spotify.getCategories().then((categories) => {
+      spotify.getCategories({ country: 'IN' }).then((categories) => {
         dispatch({
           type: actions.SET_CATEGORIES,
           payload: categories.categories,
@@ -53,9 +53,6 @@ function App() {
         dispatch({ type: actions.SET_RECENT_TRACKS, payload: recentTracks });
       });
 
-      spotify.getNewReleases({ country: 'IN' }).then((newReleases) => {
-        // dispatch({ type: actions.SET_CATEGORIES, payload: newReleases });
-      });
     }
 
     return () => {};
