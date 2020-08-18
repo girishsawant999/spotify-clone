@@ -14,10 +14,8 @@ function App() {
 
   useEffect(() => {
     const hash = getUrlToken();
-    let _token = localStorage.getItem('_token');
-    _token = _token ? localStorage.getItem('_token') : hash.access_token;
+    const _token = hash.access_token;
     window.location.hash = '';
-    localStorage.setItem('_token', _token);
 
     if (_token) {
       dispatch({
