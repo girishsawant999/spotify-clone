@@ -25,7 +25,7 @@
   border-radius: 15px;
 }
 .body__search {
-  flex: 0.5 1;
+  flex: auto;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -33,12 +33,14 @@
   max-width: 300px;
   min-width: 100px;
   border-radius: 99px;
+  transition: width 400ms ease-in-out;
+  margin-left: 20px;
 }
 .body__SearchIcon {
   margin: 0px 10px;
   color: #808080;
 }
-.body__menu{
+.body__menu {
   flex: 0.1 1;
   display: none;
   align-items: center;
@@ -46,7 +48,6 @@
   background-color: hsl(0deg 0% 16%);
   padding: 10px;
   border-radius: 100px;
-
 }
 .body__search > input {
   border: none;
@@ -85,7 +86,7 @@
     padding: 15px;
     padding-bottom: 120px;
   }
-  .body__menu{
+  .body__menu {
     display: flex;
   }
 }
