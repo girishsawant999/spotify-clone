@@ -1,5 +1,6 @@
 import * as actions from './actionTypes';
 export const initialState = {
+  spotify: null,
   token: null,
   user: null,
   playlists: [],
@@ -11,6 +12,8 @@ export const initialState = {
 export const reducer = (state, action) => {
   console.log('action', action);
   switch (action.type) {
+    case actions.SET_SPOTIFY:
+      return { ...state, spotify: action.payload };
     case actions.SET_USER:
       return { ...state, user: action.payload };
     case actions.SET_TOKEN:

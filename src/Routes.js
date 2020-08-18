@@ -7,8 +7,10 @@ function Routes(props) {
   return (
     <Router>
       <Switch>
-        <Route path="/" component={Body} />
-        <Route exact path="/category/:category_id" component={PlayListView} />
+        <Route exact path="/" component={Body} />
+        <div class="routes">
+          <Route path="/playlist/:playlist_id" component={PlayListView} />
+        </div>
       </Switch>
     </Router>
   );

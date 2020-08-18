@@ -1,0 +1,8 @@
+.playlist {
+  padding: 30px;
+}
+@media (max-width: 768px) {
+  .playlist {
+    padding: 15px;
+  }
+}

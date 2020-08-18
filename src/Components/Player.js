@@ -9,7 +9,7 @@ function Player(props) {
     <div className="player">
       <div className="player_body">
         <Sidebar />
-        <Routes/>
+        <Routes />
       </div>
       <Footer />
     </div>

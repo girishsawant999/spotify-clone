@@ -10,12 +10,17 @@ import * as actions from './actionTypes';
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ user, token }, dispatch] = useDataLayerValue();
+  const [{ user, token }, dispatch] = useDataLayerValue();  
 
   useEffect(() => {
     const hash = getUrlToken();
     const _token = hash.access_token;
     window.location.hash = '';
+
+    dispatch({
+      type: actions.SET_SPOTIFY,
+      payload: spotify,
+    });
 
     if (_token) {
       dispatch({
