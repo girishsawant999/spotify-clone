@@ -12,11 +12,9 @@
   flex: 0.6 1;
   display: flex;
   align-items: center;
-  justify-content: normal;
-  justify-items: flex-start;
   color: white;
-  margin-right: 10px;
   width: 50vw;
+  min-width: 50vw;
 }
 .footer__left img {
   object-fit: contain;

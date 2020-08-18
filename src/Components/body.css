@@ -34,7 +34,6 @@
   min-width: 100px;
   border-radius: 99px;
   transition: width 400ms ease-in-out;
-  margin-left: 20px;
 }
 .body__SearchIcon {
   margin: 0px 10px;
@@ -48,6 +47,7 @@
   background-color: hsl(0deg 0% 16%);
   padding: 10px;
   border-radius: 100px;
+  margin-right: 10px;
 }
 .body__search > input {
   border: none;
