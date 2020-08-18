@@ -9,7 +9,7 @@ import CloseIcon from '@material-ui/icons/Close';
 function BodyHeader(props) {
   const [{ user }, dispatch] = useDataLayerValue();
   const [menuOpen, setmenuOpen] = useState(false);
-  
+
   useEffect(() => {
     const menuBtn = document.getElementById('menuBtn');
     menuBtn.addEventListener('click', () => {
@@ -43,6 +43,14 @@ function BodyHeader(props) {
           id="search"
           placeholder="Search songs, playlist, artists"
           autoComplete="off"
+          onFocus={() => {
+            document.getElementById('header__user').style.display = 'none';
+            document.getElementById('searchInput').style.maxWidth = '100%';
+          }}
+          onBlur={() => {
+            document.getElementById('header__user').style.display = 'flex';
+            document.getElementById('searchInput').style.maxWidth = '300px';
+          }}
         />
       </div>
       <div id="header__user" className="body__user">
