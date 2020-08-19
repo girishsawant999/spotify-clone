@@ -20,7 +20,7 @@ function TrackCard({ track, trackIndex }) {
     };
   }, []);
   return (
-    <Link to={`/category/${track?.id}`}>
+    <Link to={`/playlist/${track?.id}`}>
       <div id={trackIndex} className="trackcard">
         <img src={track?.images[0]?.url} alt="" />
         <h4>{track?.name}</h4>
