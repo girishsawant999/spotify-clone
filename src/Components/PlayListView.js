@@ -23,7 +23,6 @@ function PlayListView(props) {
       {/* Play List cover and description */}
       {/* tracks */}
       {playlist_id}
-      {playlist}
     </div>
   );
 }
