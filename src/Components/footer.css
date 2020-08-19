@@ -13,8 +13,8 @@
   display: flex;
   align-items: center;
   color: white;
-  width: 50vw;
-  min-width: 50vw;
+  width: 40vw;
+  min-width: 40vw;
 }
 .footer__left img {
   object-fit: contain;
