@@ -20,7 +20,7 @@
 .body .trackCardsContainer {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
+  gap: 15;
   overflow-x: auto;
   border-radius: 10px;
 }
