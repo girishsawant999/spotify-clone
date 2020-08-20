@@ -1,6 +1,30 @@
 .playlist {
   padding: 30px;
 }
+.playlist__cover {
+  display: flex;
+  align-items: flex-end;
+  margin: 20px 0px;
+}
+.playlist__image {
+  height: 40vh;
+}
+.playlist__image img {
+  height: 100%;
+}
+
+.playlist_details {
+  margin-left: 15px;
+  padding: 10px 0px;
+}
+.playlist__title {
+  font-size: xxx-large;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.playlist__description {
+  font-size: small;
+}
 @media (max-width: 768px) {
   .playlist {
     padding: 15px;
