@@ -7,13 +7,15 @@
   margin: 20px 0px;
 }
 .playlist__image {
-  height: 40vh;
+  flex: 0.4 1;
+  max-height: 40vh;
 }
 .playlist__image img {
   height: 100%;
 }
 
 .playlist_details {
+  flex: 0.6 1;
   margin-left: 15px;
   padding: 10px 0px;
 }
