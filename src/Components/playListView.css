@@ -12,6 +12,7 @@
 }
 .playlist__image img {
   height: -webkit-fill-available;
+  border-radius: 5px;
 }
 
 .playlist_details {
@@ -29,5 +30,8 @@
 @media (max-width: 768px) {
   .playlist {
     padding: 15px;
+  }
+  .playlist__title {
+    font-size: xx-large;
   }
 }
