@@ -1,24 +1,20 @@
 .playlist {
   padding: 30px;
-  width: 100vw;
-  overflow-x: hidden
+  overflow-x: hidden;
 }
 .playlist__cover {
   display: flex;
   align-items: flex-end;
   margin: 20px 0px;
-  width: 100%;
 }
 .playlist__image {
-  flex: 0.4 1;
-  max-height: 40vh;
+  max-height: 30vh;
 }
 .playlist__image img {
-  object-fit: contain;
+  height: -webkit-fill-available;
 }
 
 .playlist_details {
-  flex: 0.6 1;
   margin-left: 15px;
   padding: 10px 0px;
 }
