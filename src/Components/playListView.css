@@ -1,5 +1,7 @@
 .playlist {
   padding: 30px;
+  width: 100vw;
+  overflow-x: hidden
 }
 .playlist__cover {
   display: flex;
