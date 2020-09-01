@@ -4,7 +4,6 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import { Link } from 'react-router-dom';
 
 function TrackCard({ track, trackIndex }) {
-  console.log('track :>> ', track);
   useEffect(() => {
     document.getElementById(trackIndex).addEventListener('mouseover', (e) => {
       document.getElementById(`play-${trackIndex}`).style.opacity = 1;

@@ -1,0 +1,48 @@
+.TrackRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-height: 60px;
+  padding: 3px;
+  margin: 3px 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+.TrackRow__img {
+  flex: 0.2 1;
+  max-width: 70px;
+}
+.TrackRow__img img {
+  height: -webkit-fill-available;
+  border-radius: 99px;
+  display: flex;
+  margin: auto;
+}
+.TrackRow__details {
+  flex: 0.5 1;
+}
+.TrackRow__title {
+  font-weight: 600;
+}
+.TrackRow__desc {
+  font-size: smaller;
+  color: grey;
+}
+.TrackRow__playButton {
+  flex: 0.2;
+}
+.TrackRow__playButton svg {
+  display: flex;
+  margin: auto;
+  background-color: #198e42;
+  padding: 5px;
+  border-radius: 99px;
+}
+.TrackRow__more {
+  flex: 0.1;
+}
+.TrackRow__more svg {
+    display: flex;
+    margin: auto;
+
+}

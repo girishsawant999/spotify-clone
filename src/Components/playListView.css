@@ -2,38 +2,12 @@
   padding: 30px;
   overflow-x: hidden;
 }
-.playlist__cover {
-  display: flex;
-  align-items: flex-end;
-  margin: 20px 0px;
-}
-.playlist__image {
-  max-height: 30vh;
-  max-width: 40vw;
-}
-.playlist__image img {
-  border-radius: 5px;
-  max-width: inherit;
-  max-height: inherit;
-}
-
-.playlist_details {
-  margin-left: 15px;
-  padding: 10px 0px;
-}
-.playlist__title {
-  font-size: xxx-large;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-.playlist__description {
-  font-size: small;
+.playlist hr{
+  border: 1px solid #282828;
+  margin-bottom: 20px;
 }
 @media (max-width: 768px) {
   .playlist {
     padding: 15px;
-  }
-  .playlist__title {
-    font-size: xx-large;
   }
 }
