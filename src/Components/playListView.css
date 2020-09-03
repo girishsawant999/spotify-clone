@@ -2,9 +2,13 @@
   padding: 30px;
   overflow-x: hidden;
 }
-.playlist hr{
+.playlist hr {
   border: 1px solid #282828;
   margin-bottom: 20px;
+}
+.playlist__trackscontainer {
+  height: 52vh;
+  overflow-y: auto;
 }
 @media (max-width: 768px) {
   .playlist {

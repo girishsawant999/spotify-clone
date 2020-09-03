@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   max-height: 60px;
-  padding: 3px;
+  padding: 5px;
   margin: 3px 0px;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 5px;
@@ -42,7 +42,6 @@
   flex: 0.1;
 }
 .TrackRow__more svg {
-    display: flex;
-    margin: auto;
-
+  display: flex;
+  margin: auto;
 }

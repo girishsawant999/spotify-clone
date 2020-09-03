@@ -29,9 +29,11 @@ function PlayListView(props) {
       <BodyHeader />
       <PlaylistCover playlist={playlist} />
       <hr />
-      {tracks.map((track) => (
-        <TrackRow track={track} />
-      ))}
+      <div className="playlist__trackscontainer">
+        {tracks.map((track) => (
+          <TrackRow track={track} />
+        ))}
+      </div>
 
       {/* tracks */}
     </div>
