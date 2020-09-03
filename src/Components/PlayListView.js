@@ -12,7 +12,7 @@ function PlayListView(props) {
   let { playlist_id } = params;
   const [{ spotify }, dispatch] = useDataLayerValue();
   const [playlist, setplaylist] = useState(null);
-  const [tracks, settracks] = useState([])
+  const [tracks, settracks] = useState([]);
 
   useEffect(() => {
     spotify.getPlaylist(playlist_id).then((response) => {
@@ -27,16 +27,13 @@ function PlayListView(props) {
   return (
     <div className="playlist">
       <BodyHeader />
-      <PlaylistCover playlist={playlist}/>
-      <hr/>
-      <TrackRow/>
-      <TrackRow/>
-      <TrackRow/>
-      <TrackRow/>
-      <TrackRow/>
+      <PlaylistCover playlist={playlist} />
+      <hr />
+      {tracks.map((track) => (
+        <TrackRow track={track} />
+      ))}
 
       {/* tracks */}
-
     </div>
   );
 }

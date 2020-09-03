@@ -3,21 +3,20 @@ import './trackRow.css';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-function TrackRow(props) {
+function TrackRow({ track }) {
   return (
     <div class="TrackRow">
       <div className="TrackRow__img">
-        <img
-          src="https://i.scdn.co/image/ab67616d00001e0265abb9d9670ac2915d7e67fe"
-          alt=""
-        />
+        <img src={track?.track?.album?.images[2]?.url} alt="" />
       </div>
       <div className="TrackRow__details">
-        <p className="TrackRow__title">Jaan Ban Gaye</p>
-        <p className="TrackRow__desc">Mithoon, Vishal Mishra, Asees Kaur</p>
+        <p className="TrackRow__title">{track?.track?.name}</p>
+        <p className="TrackRow__desc">
+          {track?.track?.artists.map((artist) => artist.name).join(', ')}
+        </p>
       </div>
       <div className="TrackRow__playButton">
-          <PlayArrowIcon />
+        <PlayArrowIcon />
       </div>
       <div className="TrackRow__more">
         <MoreVertIcon />
