@@ -38,7 +38,7 @@ function PlayListView(props) {
             }
           : {}
       }>
-      {console.log('playlist :>> ', playlist)} <BodyHeader />
+      <BodyHeader />
       <PlaylistCover playlist={playlist} />
       <hr />
       <div className="playlist__trackscontainer">
