@@ -46,7 +46,6 @@ function PlayListView(props) {
           <TrackRow track={track} />
         ))}
       </div>
-      {/* tracks */}
     </div>
   );
 }
