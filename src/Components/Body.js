@@ -1,8 +1,7 @@
 import React from 'react';
-import './body.css';
 import { useDataLayerValue } from '../DataLayer';
+import './body.css';
 import BodyHeader from './BodyHeader';
-import TrackCard from './TrackCardZero';
 import TracksContainer from './TracksContainer';
 
 function Body() {

@@ -1,5 +1,6 @@
 import * as actions from './actionTypes';
 export const initialState = {
+  loader: false,
   spotify: null,
   token: null,
   user: null,
@@ -12,6 +13,10 @@ export const initialState = {
 export const reducer = (state, action) => {
   console.log('action', action);
   switch (action.type) {
+    case actions.LOADER_TRUE:
+      return { ...state, loader: true };
+    case actions.LOADER_FALSE:
+      return { ...state, loader: false };
     case actions.SET_SPOTIFY:
       return { ...state, spotify: action.payload };
     case actions.SET_USER:

@@ -1,4 +1,6 @@
-export const SET_SPOTIFY = "SET_SPOTIFY"
+export const LOADER_TRUE = 'LOADER_TRUE';
+export const LOADER_FALSE = 'LOADER_FALSE';
+export const SET_SPOTIFY = 'SET_SPOTIFY';
 export const SET_USER = 'SET_USER';
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_PLAYLIST = 'SET_PLAYLIST';

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import * as actions from '../actionTypes';
 import { useDataLayerValue } from '../DataLayer';
-import './playListView.css';
 import BodyHeader from './BodyHeader';
 import PlaylistCover from './PlaylistCover';
+import './playListView.css';
 import TrackRow from './TrackRow';
 
 function PlayListView(props) {
@@ -15,24 +16,36 @@ function PlayListView(props) {
   const [tracks, settracks] = useState([]);
 
   useEffect(() => {
+    dispatch({ type: actions.LOADER_TRUE });
     spotify.getPlaylist(playlist_id).then((response) => {
       setplaylist(response);
+      dispatch({ type: actions.LOADER_FALSE });
     });
     spotify.getPlaylistTracks(playlist_id).then((response) => {
       settracks(response.items);
+      dispatch({ type: actions.LOADER_FALSE });
     });
     return () => {};
   }, []);
 
   return (
-    <div className="playlist">
-      <BodyHeader />
+    <div
+      className="playlist"
+      style={
+        playlist?.primary_color
+          ? {
+              background: `#121212 linear-gradient(${playlist.primary_color}, #121212, #000)`,
+            }
+          : {}
+      }>
+      {console.log('playlist :>> ', playlist)} <BodyHeader />
       <PlaylistCover playlist={playlist} />
       <hr />
-      {tracks.map((track) => (
-        <TrackRow track={track} />
-      ))}
-
+      <div className="playlist__trackscontainer">
+        {tracks.map((track) => (
+          <TrackRow track={track} />
+        ))}
+      </div>
       {/* tracks */}
     </div>
   );

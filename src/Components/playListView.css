@@ -1,10 +1,15 @@
 .playlist {
   padding: 30px;
   overflow-x: hidden;
+  background: #121212 linear-gradient(#1db95469, #121212, #000);
 }
-.playlist hr{
+.playlist hr {
   border: 1px solid #282828;
   margin-bottom: 20px;
+}
+.playlist__trackscontainer {
+  height: 52vh;
+  overflow-y: auto;
 }
 @media (max-width: 768px) {
   .playlist {
