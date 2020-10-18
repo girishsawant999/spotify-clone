@@ -13,9 +13,9 @@
 .sidebar .sidebar__menu_close {
   position: absolute;
   display: none;
-  top: 33px;
-  right: 25px;
-  padding: 4px;
+  top: 30px;
+  right: 15px;
+  padding: 8px;
   border-radius: 50%;
   background: hsl(0deg 0% 16%);
 }
