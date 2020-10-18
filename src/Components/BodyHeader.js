@@ -10,30 +10,14 @@ function BodyHeader(props) {
   const [{ user }, dispatch] = useDataLayerValue();
   const [menuOpen, setmenuOpen] = useState(false);
 
-  useEffect(() => {
-    const menuBtn = document.getElementById('menuBtn');
-    menuBtn.addEventListener('click', () => {
-      if (document.getElementById('sidebar').style.display === 'none') {
-        document.getElementById('sidebar').style.display = 'block';
-        document.getElementById('searchInput').style.display = 'none';
-        document.getElementById('header__user').style.display = 'none';
-        setmenuOpen(true);
-      } else {
-        document.getElementById('sidebar').style.display = 'none';
-        document.getElementById('searchInput').style.display = 'flex';
-        document.getElementById('header__user').style.display = 'flex';
-        setmenuOpen(false);
-      }
-    });
-    return () => {
-      menuBtn.removeEventListener('click', {});
-    };
-  }, []);
+  const openSidebar = () => {
+    document.getElementById('sidebar').style.display = 'block';
+  };
 
   return (
     <div className="body__header">
-      <span id="menuBtn" className="body__menu">
-        {menuOpen ? <CloseIcon /> : <MenuIcon />}
+      <span id="menuBtn" className="body__menu" onClick={openSidebar}>
+        <MenuIcon />
       </span>
       <div id="searchInput" className="body__search">
         <SearchIcon className="body__SearchIcon" />

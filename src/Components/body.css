@@ -1,6 +1,6 @@
 .body {
   flex: 0.8;
-  background: #121212 linear-gradient(#121212,#121212, #1db9545c);
+  background: #121212 linear-gradient(#121212, #121212, #1db9545c);
   height: 100vh;
   color: white;
   padding: 30px;
@@ -20,7 +20,6 @@
 .body .trackCardsContainer {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
   overflow-x: auto;
   border-radius: 10px;
 }

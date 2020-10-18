@@ -10,6 +10,16 @@
   padding-bottom: 120px;
 }
 
+.sidebar .sidebar__menu_close {
+  position: absolute;
+  display: none;
+  top: 33px;
+  right: 25px;
+  padding: 4px;
+  border-radius: 50%;
+  background: hsl(0deg 0% 16%);
+}
+
 .sidebar > svg {
   margin-right: auto;
   height: 70px;
@@ -17,9 +27,9 @@
 }
 
 .sidebar > hr {
- border : 1px solid #282828;
- margin: 10px auto;
- width: 90%;
+  border: 1px solid #282828;
+  margin: 10px auto;
+  width: 90%;
 }
 
 .sidebar_title {
@@ -27,8 +37,12 @@
   padding: 5px;
   font-size: 12px;
 }
-@media(max-width: 768px){
-  .sidebar{
+@media (max-width: 768px) {
+  .sidebar {
     display: none;
+    min-width: 100vw;
+  }
+  .sidebar .sidebar__menu_close {
+    display: flex;
   }
 }
