@@ -1,11 +1,9 @@
 .body {
   flex: 0.8;
   background: #121212 linear-gradient(#121212, #121212, #1db9545c);
-  height: 100vh;
   color: white;
   padding: 30px;
   overflow: overlay;
-  padding-bottom: 120px;
 }
 .body__header {
   display: flex;
@@ -84,7 +82,6 @@
   .body {
     flex: auto;
     padding: 15px;
-    padding-bottom: 120px;
   }
   .body__menu {
     display: flex;

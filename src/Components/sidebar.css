@@ -1,5 +1,4 @@
 .sidebar {
-  height: 100vh;
   flex: 0.2;
   color: white;
   min-width: 230px;
@@ -7,7 +6,6 @@
   background-color: #040404;
   overflow: overlay;
   transition: display 200ms ease-in-out;
-  padding-bottom: 120px;
 }
 
 .sidebar .sidebar__menu_close {
