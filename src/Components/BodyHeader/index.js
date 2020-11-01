@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './body.css';
-import { useDataLayerValue } from '../DataLayer';
+import '../Body/body.css';
+import { useDataLayerValue } from '../../DataLayer';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import MenuIcon from '@material-ui/icons/Menu';

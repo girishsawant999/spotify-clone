@@ -1,4 +1,6 @@
 .player {
+  overflow: hidden;
+  background: black;
 }
 .player_body {
   display: flex;

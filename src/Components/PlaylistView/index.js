@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import * as actions from '../actionTypes';
-import { useDataLayerValue } from '../DataLayer';
-import BodyHeader from './BodyHeader';
-import PlaylistCover from './PlaylistCover';
+import * as actions from '../../actionTypes';
+import { useDataLayerValue } from '../../DataLayer';
+import BodyHeader from '../BodyHeader';
+import PlaylistCover from '../PlaylistCover';
 import './playListView.css';
-import TrackRow from './TrackRow';
+import TrackRow from '../TrackRow';
 
 function PlayListView(props) {
   const {

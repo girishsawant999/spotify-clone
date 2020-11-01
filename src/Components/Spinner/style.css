@@ -58,9 +58,10 @@ body {
   background: #1db954;
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 0 0 10px #1db954, 0 0 20px #1db954, 0 0 30px #1db954,
+  box-shadow: 0 0 10px #1db954, 0 0 20px #1db954;
+   /* 0 0 30px #1db954,
     0 0 40px #1db954, 0 0 50px #1db954, 0 0 60px #1db954, 0 0 70px #1db954,
-    0 0 80px #1db954, 0 0 90px #1db954, 0 0 100px #1db954;
+    0 0 80px #1db954, 0 0 90px #1db954, 0 0 100px #1db954; */
 }
 .spinner .loader span {
   position: absolute;

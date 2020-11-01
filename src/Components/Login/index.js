@@ -1,7 +1,7 @@
 import React from 'react';
 import './login.css'
-import logo from '../Assets/images/logo.gif'
-import { loginUrl } from '../Spotify'
+import logo from '../../Assets/images/logo.gif'
+import { loginUrl } from '../../Spotify'
 
 function Login(props) {
     return (

@@ -8,7 +8,7 @@ import ShuffleIcon from '@material-ui/icons/Shuffle';
 import Slider from '@material-ui/core/Slider';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import VolumeUp from '@material-ui/icons/VolumeUp';
-import { useDataLayerValue } from '../DataLayer';
+import { useDataLayerValue } from '../../DataLayer';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 
 let audio = null;
