@@ -53,15 +53,6 @@ function App() {
       });
 
       dispatch({ type: actions.LOADER_TRUE });
-      spotify.getCategoryPlaylists("toplists").then((currentCategory) => {
-        dispatch({
-          type: actions.SET_CURRENT_CATEGORY,
-          payload: currentCategory,
-        });
-        dispatch({ type: actions.LOADER_FALSE });
-      });
-
-      dispatch({ type: actions.LOADER_TRUE });
       spotify.getMyRecentlyPlayedTracks().then((recentTracks) => {
         dispatch({ type: actions.SET_RECENT_TRACKS, payload: recentTracks });
         dispatch({ type: actions.LOADER_FALSE });

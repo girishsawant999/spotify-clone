@@ -5,8 +5,7 @@ export const initialState = {
   token: null,
   user: null,
   playlists: [],
-  categories: [],
-  currentCategory: {},
+  categories: {},
   recentTracks: {},
 };
 
@@ -27,8 +26,6 @@ export const reducer = (state, action) => {
       return { ...state, playlists: action.payload };
     case actions.SET_CATEGORIES:
       return { ...state, categories: action.payload };
-    case actions.SET_CURRENT_CATEGORY:
-      return { ...state, currentCategory: action.payload };
     case actions.SET_RECENT_TRACKS:
       return { ...state, recentTracks: action.payload };
 
