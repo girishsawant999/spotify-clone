@@ -1,4 +1,4 @@
-import * as actions from './actionTypes';
+import * as actions from "./actionTypes";
 export const initialState = {
   loader: false,
   spotify: null,
@@ -11,7 +11,7 @@ export const initialState = {
 };
 
 export const reducer = (state, action) => {
-  console.log('action', action);
+  console.log("action", action);
   switch (action.type) {
     case actions.LOADER_TRUE:
       return { ...state, loader: true };

@@ -1,7 +1,7 @@
-import React from 'react';
-import './trackRow.css';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import React from "react";
+import "./trackRow.css";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 function TrackRow({ track }) {
   return (
@@ -12,7 +12,7 @@ function TrackRow({ track }) {
       <div className="TrackRow__details">
         <p className="TrackRow__title">{track?.track?.name}</p>
         <p className="TrackRow__desc">
-          {track?.track?.artists.map((artist) => artist.name).join(', ')}
+          {track?.track?.artists.map((artist) => artist.name).join(", ")}
         </p>
       </div>
       <div className="TrackRow__playButton">

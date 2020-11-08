@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import SpotifyWebApi from 'spotify-web-api-js';
-import * as actions from './actionTypes';
-import './App.css';
-import Login from './Components/Login';
-import Player from './Components/Player';
-import Spinner from './Components/Spinner/index';
-import { useDataLayerValue } from './DataLayer';
-import { getUrlToken } from './Spotify';
+import React, { useEffect } from "react";
+import SpotifyWebApi from "spotify-web-api-js";
+import * as actions from "./actionTypes";
+import "./App.css";
+import Login from "./Components/Login";
+import Player from "./Components/Player";
+import Spinner from "./Components/Spinner/index";
+import { useDataLayerValue } from "./DataLayer";
+import { getUrlToken } from "./Spotify";
 
 const spotify = new SpotifyWebApi();
 
@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const hash = getUrlToken();
     const _token = hash.access_token;
-    window.location.hash = '';
+    window.location.hash = "";
 
     dispatch({
       type: actions.SET_SPOTIFY,
@@ -44,7 +44,7 @@ function App() {
       });
 
       dispatch({ type: actions.LOADER_TRUE });
-      spotify.getCategories({ country: 'IN' }).then((categories) => {
+      spotify.getCategories({ country: "IN" }).then((categories) => {
         dispatch({
           type: actions.SET_CATEGORIES,
           payload: categories.categories,
@@ -53,7 +53,7 @@ function App() {
       });
 
       dispatch({ type: actions.LOADER_TRUE });
-      spotify.getCategoryPlaylists('toplists').then((currentCategory) => {
+      spotify.getCategoryPlaylists("toplists").then((currentCategory) => {
         dispatch({
           type: actions.SET_CURRENT_CATEGORY,
           payload: currentCategory,

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import './footer.css';
-import RepeatIcon from '@material-ui/icons/Repeat';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import ShuffleIcon from '@material-ui/icons/Shuffle';
-import Slider from '@material-ui/core/Slider';
-import VolumeOffIcon from '@material-ui/icons/VolumeOff';
-import VolumeUp from '@material-ui/icons/VolumeUp';
-import { useDataLayerValue } from '../../DataLayer';
-import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
+import React, { useState, useEffect } from "react";
+import "./footer.css";
+import RepeatIcon from "@material-ui/icons/Repeat";
+import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
+import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
+import SkipNextIcon from "@material-ui/icons/SkipNext";
+import ShuffleIcon from "@material-ui/icons/Shuffle";
+import Slider from "@material-ui/core/Slider";
+import VolumeOffIcon from "@material-ui/icons/VolumeOff";
+import VolumeUp from "@material-ui/icons/VolumeUp";
+import { useDataLayerValue } from "../../DataLayer";
+import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
 
 let audio = null;
 function Footer(props) {
@@ -81,13 +81,13 @@ function Footer(props) {
               <p>
                 {recentTracks?.items[trackIndex]?.track?.artists
                   .map((artist) => artist.name)
-                  .join(', ')}
+                  .join(", ")}
               </p>
             </div>
           </div>
           <div className="footer__center">
             <RepeatIcon
-              className={repeat ? 'green' : ''}
+              className={repeat ? "green" : ""}
               onClick={() => setrepeat(!repeat)}
             />
             <SkipPreviousIcon
@@ -115,7 +115,7 @@ function Footer(props) {
               }}
             />
             <ShuffleIcon
-              className={shuffle ? 'green' : ''}
+              className={shuffle ? "green" : ""}
               onClick={() => setshuffle(!shuffle)}
             />
           </div>

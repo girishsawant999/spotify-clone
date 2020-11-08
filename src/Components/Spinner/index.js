@@ -1,6 +1,6 @@
-import React from 'react';
-import { useDataLayerValue } from '../../DataLayer';
-import './style.css';
+import React from "react";
+import { useDataLayerValue } from "../../DataLayer";
+import "./style.css";
 
 function Spinner(props) {
   const [{ loader }] = useDataLayerValue();

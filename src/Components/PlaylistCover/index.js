@@ -1,10 +1,10 @@
-import React from 'react';
-import './playlistCover.css'
+import React from "react";
+import "./playlistCover.css";
 
-function PlaylistCover({playlist}) {
-    return (
-        <div>
-            <div class="playlist__cover">
+function PlaylistCover({ playlist }) {
+  return (
+    <div>
+      <div class="playlist__cover">
         <div class="playlist__image">
           <img src={playlist?.images[0]?.url} alt="" />
         </div>
@@ -13,8 +13,8 @@ function PlaylistCover({playlist}) {
           <p class="playlist__description">{playlist?.description} </p>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 }
 
 export default PlaylistCover;

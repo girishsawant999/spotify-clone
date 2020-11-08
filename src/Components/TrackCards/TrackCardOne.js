@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react';
-import './trackCard.css';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import "./trackCard.css";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import { Link } from "react-router-dom";
 
 function TrackCard({ track, trackIndex }) {
   useEffect(() => {
-    document.getElementById(trackIndex).addEventListener('mouseover', (e) => {
+    document.getElementById(trackIndex).addEventListener("mouseover", (e) => {
       document.getElementById(`play-${trackIndex}`).style.opacity = 1;
     });
 
-    document.getElementById(trackIndex).addEventListener('mouseleave', (e) => {
+    document.getElementById(trackIndex).addEventListener("mouseleave", (e) => {
       document.getElementById(`play-${trackIndex}`).style.opacity = 0;
     });
 
     return () => {
-      document.removeEventListener('mouseover', (e) => {});
-      document.removeEventListener('mouseleave', (e) => {});
+      document.removeEventListener("mouseover", (e) => {});
+      document.removeEventListener("mouseleave", (e) => {});
     };
   }, []);
   return (

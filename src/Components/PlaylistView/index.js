@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import * as actions from '../../actionTypes';
-import { useDataLayerValue } from '../../DataLayer';
-import BodyHeader from '../BodyHeader';
-import PlaylistCover from '../PlaylistCover';
-import './playListView.css';
-import TrackRow from '../TrackRow';
+import React, { useEffect, useState } from "react";
+import * as actions from "../../actionTypes";
+import { useDataLayerValue } from "../../DataLayer";
+import BodyHeader from "../BodyHeader";
+import PlaylistCover from "../PlaylistCover";
+import "./playListView.css";
+import TrackRow from "../TrackRow";
 
 function PlayListView(props) {
   const {
@@ -37,7 +37,8 @@ function PlayListView(props) {
               background: `#121212 linear-gradient(${playlist.primary_color}, #121212, #000)`,
             }
           : {}
-      }>
+      }
+    >
       <BodyHeader />
       <PlaylistCover playlist={playlist} />
       <hr />

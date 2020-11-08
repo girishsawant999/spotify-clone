@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import '../Body/body.css';
-import { useDataLayerValue } from '../../DataLayer';
-import SearchIcon from '@material-ui/icons/Search';
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
+import React, { useEffect, useState } from "react";
+import "../Body/body.css";
+import { useDataLayerValue } from "../../DataLayer";
+import SearchIcon from "@material-ui/icons/Search";
+import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
+import MenuIcon from "@material-ui/icons/Menu";
+import CloseIcon from "@material-ui/icons/Close";
 
 function BodyHeader(props) {
   const [{ user }, dispatch] = useDataLayerValue();
   const [menuOpen, setmenuOpen] = useState(false);
 
   const openSidebar = () => {
-    document.getElementById('sidebar').style.display = 'block';
+    document.getElementById("sidebar").style.display = "block";
   };
 
   return (
@@ -28,12 +28,12 @@ function BodyHeader(props) {
           placeholder="Search songs, playlist, artists"
           autoComplete="off"
           onFocus={() => {
-            document.getElementById('header__user').style.display = 'none';
-            document.getElementById('searchInput').style.maxWidth = '100%';
+            document.getElementById("header__user").style.display = "none";
+            document.getElementById("searchInput").style.maxWidth = "100%";
           }}
           onBlur={() => {
-            document.getElementById('header__user').style.display = 'flex';
-            document.getElementById('searchInput').style.maxWidth = '300px';
+            document.getElementById("header__user").style.display = "flex";
+            document.getElementById("searchInput").style.maxWidth = "300px";
           }}
         />
       </div>

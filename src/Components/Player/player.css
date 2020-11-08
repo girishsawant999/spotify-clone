@@ -4,7 +4,7 @@
 }
 .player_body {
   display: flex;
-  height: calc(100vh - 105px );
+  height: calc(100vh - 105px);
 }
 .routes {
   flex: 0.8;

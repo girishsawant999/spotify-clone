@@ -1,8 +1,8 @@
-import React from 'react';
-import { useDataLayerValue } from '../../DataLayer';
-import './body.css';
-import BodyHeader from '../BodyHeader';
-import TracksContainer from '../TracksContainer';
+import React from "react";
+import { useDataLayerValue } from "../../DataLayer";
+import "./body.css";
+import BodyHeader from "../BodyHeader";
+import TracksContainer from "../TracksContainer";
 
 function Body() {
   const [{ recentTracks, currentCategory }, dispatch] = useDataLayerValue();
@@ -12,13 +12,13 @@ function Body() {
       <BodyHeader />
       <TracksContainer
         tracks={recentTracks}
-        name={'Recently Played'}
+        name={"Recently Played"}
         type={0}
       />
 
       <TracksContainer
         tracks={currentCategory?.playlists}
-        name={'Top list'}
+        name={"Top list"}
         type={1}
       />
     </div>
