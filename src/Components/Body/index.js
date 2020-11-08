@@ -25,19 +25,20 @@ function Body() {
     };
 
     if (categories?.items && categories.items.length > 0) {
-      getCategoryPlaylists(categories.items[getRandomInt(0, 19)]).then((item) =>
+      let items = categories.items;
+      getCategoryPlaylists(items.splice(getRandomInt(0, items.length-1),1)).then((item) =>
         setCat1(item)
       );
-      getCategoryPlaylists(categories.items[getRandomInt(0, 19)]).then((item) =>
+      getCategoryPlaylists(items.splice(getRandomInt(0, items.length-1),1)).then((item) =>
         setCat2(item)
       );
-      getCategoryPlaylists(categories.items[getRandomInt(0, 19)]).then((item) =>
+      getCategoryPlaylists(items.splice(getRandomInt(0, items.length-1),1)).then((item) =>
         setCat3(item)
       );
-      getCategoryPlaylists(categories.items[getRandomInt(0, 19)]).then((item) =>
+      getCategoryPlaylists(items.splice(getRandomInt(0, items.length-1),1)).then((item) =>
         setCat4(item)
       );
-      getCategoryPlaylists(categories.items[getRandomInt(0, 19)]).then((item) =>
+      getCategoryPlaylists(items.splice(getRandomInt(0, items.length-1),1)).then((item) =>
         setCat5(item)
       );
     }
