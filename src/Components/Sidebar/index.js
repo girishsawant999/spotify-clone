@@ -1,12 +1,12 @@
+import CloseIcon from "@material-ui/icons/Close";
+import HomeIcon from "@material-ui/icons/Home";
+import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
+import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
+import { Link } from "react-router-dom";
+import { useDataLayerValue } from "../../DataLayer";
 import "./sidebar.css";
 import SidebarOptions from "./SidebarOptions";
-import HomeIcon from "@material-ui/icons/Home";
-import SearchIcon from "@material-ui/icons/Search";
-import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
-import { useDataLayerValue } from "../../DataLayer";
-import { Link } from "react-router-dom";
-import CloseIcon from "@material-ui/icons/Close";
 
 function Sidebar(props) {
   const [{ playlists, categories }, dispatch] = useDataLayerValue();

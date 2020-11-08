@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import "./footer.css";
-import RepeatIcon from "@material-ui/icons/Repeat";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
-import ShuffleIcon from "@material-ui/icons/Shuffle";
 import Slider from "@material-ui/core/Slider";
+import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
+import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
+import RepeatIcon from "@material-ui/icons/Repeat";
+import ShuffleIcon from "@material-ui/icons/Shuffle";
+import SkipNextIcon from "@material-ui/icons/SkipNext";
+import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeUp from "@material-ui/icons/VolumeUp";
+import React, { useEffect, useState } from "react";
 import { useDataLayerValue } from "../../DataLayer";
-import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
+import "./footer.css";
 
 let audio = null;
 function Footer(props) {

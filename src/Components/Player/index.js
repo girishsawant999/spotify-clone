@@ -1,7 +1,7 @@
 import React from "react";
-import "./player.css";
-import Footer from "../Footer";
 import Routes from "../../Routes";
+import Footer from "../Footer";
+import "./player.css";
 
 function Player(props) {
   return (

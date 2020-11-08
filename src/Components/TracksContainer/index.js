@@ -1,7 +1,7 @@
 import React from "react";
 import "../Body/body.css";
-import TrackCardZero from "../TrackCards/TrackCardZero";
 import TrackCardOne from "../TrackCards/TrackCardOne";
+import TrackCardZero from "../TrackCards/TrackCardZero";
 
 function TracksContainer({ tracks, name, type }) {
   return tracks?.items ? (

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import "../Body/body.css";
-import { useDataLayerValue } from "../../DataLayer";
-import SearchIcon from "@material-ui/icons/Search";
-import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import MenuIcon from "@material-ui/icons/Menu";
-import CloseIcon from "@material-ui/icons/Close";
+import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
+import SearchIcon from "@material-ui/icons/Search";
+import React, { useState } from "react";
+import { useDataLayerValue } from "../../DataLayer";
+import "../Body/body.css";
 
 function BodyHeader(props) {
   const [{ user }, dispatch] = useDataLayerValue();

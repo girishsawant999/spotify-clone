@@ -1,7 +1,7 @@
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React from "react";
 import "./trackRow.css";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 function TrackRow({ track }) {
   return (

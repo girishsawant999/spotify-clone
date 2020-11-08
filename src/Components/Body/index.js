@@ -1,8 +1,8 @@
 import React from "react";
 import { useDataLayerValue } from "../../DataLayer";
-import "./body.css";
 import BodyHeader from "../BodyHeader";
 import TracksContainer from "../TracksContainer";
+import "./body.css";
 
 function Body() {
   const [{ recentTracks, currentCategory }, dispatch] = useDataLayerValue();

@@ -1,6 +1,6 @@
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React, { useEffect } from "react";
 import "./trackCard.css";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 
 function TrackCard({ track, trackIndex }) {
   useEffect(() => {
