@@ -31,11 +31,13 @@
 .trackcard > h4 {
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
   margin-bottom: 10px;
 }
 .trackcard > p {
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: x-small;
   margin-bottom: 5px;
 }

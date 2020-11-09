@@ -25,6 +25,7 @@
 .footer__left .footer__details {
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .footer__left .footer__details h4 {
   margin-bottom: 5px;
