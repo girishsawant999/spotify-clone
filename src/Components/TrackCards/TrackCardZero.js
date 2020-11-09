@@ -6,11 +6,13 @@ import "./trackCard.css";
 function TrackCard({ track, trackIndex }) {
   useEffect(() => {
     document.getElementById(trackIndex).addEventListener("mouseover", (e) => {
-      document.getElementById(`play-${trackIndex}`).style.opacity = 1;
+      if (document.getElementById(`play-${trackIndex}`))
+        document.getElementById(`play-${trackIndex}`).style.opacity = 1;
     });
 
     document.getElementById(trackIndex).addEventListener("mouseleave", (e) => {
-      document.getElementById(`play-${trackIndex}`).style.opacity = 0;
+      if (document.getElementById(`play-${trackIndex}`))
+        document.getElementById(`play-${trackIndex}`).style.opacity = 0;
     });
 
     return () => {
