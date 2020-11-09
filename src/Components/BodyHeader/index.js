@@ -11,7 +11,11 @@ function BodyHeader(props) {
   const [menuOpen, setmenuOpen] = useState(false);
 
   const openSidebar = () => {
-    document.getElementById("sidebar").style.display = "block";
+    const element = document.getElementById("sidebar");
+    if (element) {
+      element.classList.toggle("hidden");
+      element.classList.toggle("display");
+    }
   };
 
   return (

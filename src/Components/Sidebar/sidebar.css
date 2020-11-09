@@ -7,7 +7,12 @@
   overflow: overlay;
   transition: display 200ms ease-in-out;
 }
-
+.hidden {
+  display: initial;
+}
+.display {
+  display: initial;
+}
 .sidebar .sidebar__menu_close {
   position: absolute;
   display: none;
@@ -37,9 +42,14 @@
 }
 @media (max-width: 768px) {
   .sidebar {
-    display: none;
     min-width: calc(100vw - 40px);
     padding: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+  .display {
+    display: block;
   }
   .sidebar .sidebar__menu_close {
     display: flex;

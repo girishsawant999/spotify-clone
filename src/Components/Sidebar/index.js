@@ -12,11 +12,15 @@ function Sidebar(props) {
   const [{ playlists, categories }, dispatch] = useDataLayerValue();
 
   const closeSidebar = () => {
-    document.getElementById("sidebar").style.display = "none";
+    const element = document.getElementById("sidebar");
+    if (element) {
+      element.classList.toggle("hidden");
+      element.classList.toggle("display");
+    }
   };
 
   return (
-    <div id="sidebar" className="sidebar">
+    <div id="sidebar" className="sidebar hidden">
       <svg viewBox="0 0 1134 340" class="spotify-logo--text">
         <title>Spotify</title>
         <path
