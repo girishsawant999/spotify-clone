@@ -20,9 +20,7 @@ function TrackCard({ track, trackIndex }) {
   }, []);
   return (
     <div id={trackIndex} className="trackcard">
-      <LazyLoadImage
-        src={track?.track?.album?.images[1]?.url} // use normal <img> attributes as props
-      />
+      <LazyLoadImage src={track?.track?.album?.images[1]?.url} />
       <h4>{track?.track?.name}</h4>
       <p>{track?.track?.artists.map((artist) => artist.name).join(", ")}</p>
       <span id={`play-${trackIndex}`} className="playIcon">

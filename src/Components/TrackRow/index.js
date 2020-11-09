@@ -1,13 +1,14 @@
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./trackRow.css";
 
 function TrackRow({ track }) {
   return (
     <div class="TrackRow">
       <div className="TrackRow__img">
-        <img src={track?.track?.album?.images[2]?.url} alt="" />
+        <LazyLoadImage src={track?.track?.album?.images[2]?.url} alt="" />
       </div>
       <div className="TrackRow__details">
         <p className="TrackRow__title">{track?.track?.name}</p>

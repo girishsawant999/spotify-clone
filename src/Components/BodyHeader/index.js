@@ -2,6 +2,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDataLayerValue } from "../../DataLayer";
 import "../Body/body.css";
 
@@ -39,7 +40,7 @@ function BodyHeader(props) {
       <div id="header__user" className="body__user">
         <h4>{user?.display_name}</h4>
         {user?.images?.length ? (
-          <img src={user?.images[0]} alt="" />
+          <LazyLoadImage src={user?.images[0]} />
         ) : (
           <PersonOutlineIcon className="body__avatar" />
         )}

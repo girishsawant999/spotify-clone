@@ -1,4 +1,5 @@
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./playlistCover.css";
 
 function PlaylistCover({ playlist }) {
@@ -6,7 +7,7 @@ function PlaylistCover({ playlist }) {
     <div>
       <div class="playlist__cover">
         <div class="playlist__image">
-          <img src={playlist?.images[0]?.url} alt="" />
+          <LazyLoadImage src={playlist?.images[0]?.url} alt="" />
         </div>
         <div class="playlist_details">
           <h2 class="playlist__title">{playlist?.name}</h2>

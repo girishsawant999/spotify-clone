@@ -8,6 +8,7 @@ import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeUp from "@material-ui/icons/VolumeUp";
 import React, { useEffect, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDataLayerValue } from "../../DataLayer";
 import "./footer.css";
 
@@ -70,7 +71,7 @@ function Footer(props) {
       {recentTracks?.items?.length && (
         <div className="footer">
           <div className="footer__left">
-            <img
+            <LazyLoadImage
               src={
                 recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url
               }

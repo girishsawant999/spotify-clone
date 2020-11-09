@@ -22,9 +22,7 @@ function TrackCard({ track, trackIndex }) {
   return (
     <Link to={`/playlist/${track?.id}`}>
       <div id={trackIndex} className="trackcard">
-        <LazyLoadImage
-          src={track?.images[0]?.url} // use normal <img> attributes as props
-        />
+        <LazyLoadImage src={track?.images[0]?.url} />
         <h4>{track?.name}</h4>
         <p>{track?.description}</p>
         <span id={`play-${trackIndex}`} className="playIcon">
