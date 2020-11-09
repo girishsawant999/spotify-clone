@@ -20,13 +20,21 @@
 }
 .TrackRow__details {
   flex: 0.5 1;
+  max-width: 50%;
+  overflow: hidden;
 }
 .TrackRow__title {
   font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: auto;
 }
 .TrackRow__desc {
   font-size: smaller;
   color: grey;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: auto;
 }
 .TrackRow__playButton {
   flex: 0.2;
