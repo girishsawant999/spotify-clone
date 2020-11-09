@@ -16,9 +16,9 @@
 .sidebar .sidebar__menu_close {
   position: absolute;
   display: none;
-  top: 30px;
+  top: 35px;
   right: 15px;
-  padding: 8px;
+  padding: 4px;
   border-radius: 50%;
   background: hsl(0deg 0% 16%);
 }
@@ -53,5 +53,9 @@
   }
   .sidebar .sidebar__menu_close {
     display: flex;
+  }
+  .sidebar > svg {
+    height: 60px;
+    width: 140px;
   }
 }
