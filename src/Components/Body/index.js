@@ -14,8 +14,19 @@ function Body() {
   const [cat5, setCat5] = useState({});
 
   useEffect(() => {
+    dispatch({ type: actions.LOADER_TRUE });
+    spotify.getCategories({ country: "IN" }).then((categories) => {
+      dispatch({
+        type: actions.SET_CATEGORIES,
+        payload: categories.categories,
+      });
+      dispatch({ type: actions.LOADER_FALSE });
+    });
+    return () => {};
+  }, []);
+
+  useEffect(() => {
     const getCategoryPlaylists = (playlist) => {
-      console.log("playlist :>> ", playlist);
       return new Promise((resolve) => {
         dispatch({ type: actions.LOADER_TRUE });
         spotify.getCategoryPlaylists(playlist.id).then((item) => {

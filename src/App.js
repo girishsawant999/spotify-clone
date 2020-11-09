@@ -44,15 +44,6 @@ function App() {
       });
 
       dispatch({ type: actions.LOADER_TRUE });
-      spotify.getCategories({ country: "IN" }).then((categories) => {
-        dispatch({
-          type: actions.SET_CATEGORIES,
-          payload: categories.categories,
-        });
-        dispatch({ type: actions.LOADER_FALSE });
-      });
-
-      dispatch({ type: actions.LOADER_TRUE });
       spotify.getMyRecentlyPlayedTracks().then((recentTracks) => {
         dispatch({ type: actions.SET_RECENT_TRACKS, payload: recentTracks });
         dispatch({ type: actions.LOADER_FALSE });
