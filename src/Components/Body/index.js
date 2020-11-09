@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import * as actions from "../../actionTypes";
 import { useDataLayerValue } from "../../DataLayer";
 import BodyHeader from "../BodyHeader";
 import TracksContainer from "../TracksContainer";
 import "./body.css";
-import * as actions from "../../actionTypes";
 
 function Body() {
   const [{ recentTracks, spotify, categories }, dispatch] = useDataLayerValue();
@@ -15,6 +15,7 @@ function Body() {
 
   useEffect(() => {
     const getCategoryPlaylists = (playlist) => {
+      console.log("playlist :>> ", playlist);
       return new Promise((resolve) => {
         dispatch({ type: actions.LOADER_TRUE });
         spotify.getCategoryPlaylists(playlist.id).then((item) => {
@@ -25,22 +26,22 @@ function Body() {
     };
 
     if (categories?.items && categories.items.length > 0) {
-      let items = categories.items;
-      getCategoryPlaylists(items.splice(getRandomInt(0, items.length-1),1)).then((item) =>
-        setCat1(item)
-      );
-      getCategoryPlaylists(items.splice(getRandomInt(0, items.length-1),1)).then((item) =>
-        setCat2(item)
-      );
-      getCategoryPlaylists(items.splice(getRandomInt(0, items.length-1),1)).then((item) =>
-        setCat3(item)
-      );
-      getCategoryPlaylists(items.splice(getRandomInt(0, items.length-1),1)).then((item) =>
-        setCat4(item)
-      );
-      getCategoryPlaylists(items.splice(getRandomInt(0, items.length-1),1)).then((item) =>
-        setCat5(item)
-      );
+      let { items } = categories;
+      getCategoryPlaylists(
+        items.splice(getRandomInt(0, items.length - 1), 1)[0]
+      ).then((item) => setCat1(item));
+      getCategoryPlaylists(
+        items.splice(getRandomInt(0, items.length - 1), 1)[0]
+      ).then((item) => setCat2(item));
+      getCategoryPlaylists(
+        items.splice(getRandomInt(0, items.length - 1), 1)[0]
+      ).then((item) => setCat3(item));
+      getCategoryPlaylists(
+        items.splice(getRandomInt(0, items.length - 1), 1)[0]
+      ).then((item) => setCat4(item));
+      getCategoryPlaylists(
+        items.splice(getRandomInt(0, items.length - 1), 1)[0]
+      ).then((item) => setCat5(item));
     }
     return () => {};
   }, [categories]);

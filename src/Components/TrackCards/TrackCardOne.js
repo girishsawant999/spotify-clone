@@ -1,5 +1,6 @@
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React, { useEffect } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import "./trackCard.css";
 
@@ -21,7 +22,9 @@ function TrackCard({ track, trackIndex }) {
   return (
     <Link to={`/playlist/${track?.id}`}>
       <div id={trackIndex} className="trackcard">
-        <img src={track?.images[0]?.url} alt="" />
+        <LazyLoadImage
+          src={track?.images[0]?.url} // use normal <img> attributes as props
+        />
         <h4>{track?.name}</h4>
         <p>{track?.description}</p>
         <span id={`play-${trackIndex}`} className="playIcon">
