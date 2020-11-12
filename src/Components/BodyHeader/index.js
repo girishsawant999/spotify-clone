@@ -1,14 +1,13 @@
 import MenuIcon from "@material-ui/icons/Menu";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import SearchIcon from "@material-ui/icons/Search";
-import React, { useState } from "react";
+import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDataLayerValue } from "../../DataLayer";
 import "../Body/body.css";
 
 function BodyHeader(props) {
-  const [{ user }, dispatch] = useDataLayerValue();
-  const [menuOpen, setmenuOpen] = useState(false);
+  const [{ user }] = useDataLayerValue();
 
   const openSidebar = () => {
     const element = document.getElementById("sidebar");

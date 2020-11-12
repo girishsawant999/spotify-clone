@@ -11,9 +11,9 @@ import { getUrlToken } from "./Spotify";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ user, token }, dispatch] = useDataLayerValue();
+  const [{ token }, dispatch] = useDataLayerValue();
 
-  useEffect(() => {
+  const initialize = () => {
     const hash = getUrlToken();
     const _token = hash.access_token;
     window.location.hash = "";
@@ -49,9 +49,9 @@ function App() {
         dispatch({ type: actions.LOADER_FALSE });
       });
     }
+  };
 
-    return () => {};
-  }, []);
+  useEffect(initialize, []);
 
   return (
     <div className="app">

@@ -9,7 +9,7 @@ import "./sidebar.css";
 import SidebarOptions from "./SidebarOptions";
 
 function Sidebar(props) {
-  const [{ playlists, categories }, dispatch] = useDataLayerValue();
+  const [{ playlists, categories }] = useDataLayerValue();
 
   const closeSidebar = () => {
     const element = document.getElementById("sidebar");
