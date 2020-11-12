@@ -14,6 +14,7 @@ function Body() {
   const [cat5, setCat5] = useState({});
 
   const initialize = () => {
+    if(!categories) {
     dispatch({ type: actions.LOADER_TRUE });
     spotify.getCategories({ country: "IN" }).then((categories) => {
       dispatch({
@@ -22,6 +23,7 @@ function Body() {
       });
       dispatch({ type: actions.LOADER_FALSE });
     });
+   }
   };
 
   useEffect(initialize, []);
@@ -58,12 +60,7 @@ function Body() {
         items.splice(getRandomInt(0, items.length - 1), 1)[0]
       ).then((item) => setCat5(item));
     }
-    return () => {
-      dispatch({
-        type: actions.SET_CATEGORIES,
-        payload: {},
-      });
-    };
+    return () = {};
   }, [categories, getCategoryPlaylists, dispatch]);
 
   const getRandomInt = (min, max) => {
