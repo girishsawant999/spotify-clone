@@ -60,7 +60,7 @@ function Body() {
         items.splice(getRandomInt(0, items.length - 1), 1)[0]
       ).then((item) => setCat5(item));
     }
-    return () = {};
+    return () => {};
   }, [categories, getCategoryPlaylists, dispatch]);
 
   const getRandomInt = (min, max) => {
