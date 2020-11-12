@@ -64,7 +64,7 @@ function Body() {
         payload: {},
       });
     };
-  }, [categories, getCategoryPlaylists,dispatch]);
+  }, [categories, getCategoryPlaylists, dispatch]);
 
   const getRandomInt = (min, max) => {
     return parseInt(Math.random() * (max - min) + min);
