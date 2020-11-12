@@ -7,28 +7,31 @@ import SkipNextIcon from "@material-ui/icons/SkipNext";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeUp from "@material-ui/icons/VolumeUp";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDataLayerValue } from "../../DataLayer";
 import "./footer.css";
 
 let audio = null;
 function Footer(props) {
-  const [{ recentTracks }, dispatch] = useDataLayerValue();
+  const [{ recentTracks }] = useDataLayerValue();
   const [value, setValue] = useState(0.3);
   const [trackIndex, settrackIndex] = useState(0);
   const [play, setplay] = useState(false);
   const [shuffle, setshuffle] = useState(true);
   const [repeat, setrepeat] = useState(true);
 
-  const playTrack = (state) => {
-    if (state) {
-      audio = new Audio(recentTracks?.items[trackIndex]?.track?.preview_url);
-      audio.play();
-    } else {
-      audio.pause();
-    }
-  };
+  const playTrack = useCallback(
+    (state) => {
+      if (state) {
+        audio = new Audio(recentTracks?.items[trackIndex]?.track?.preview_url);
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    },
+    [recentTracks, trackIndex]
+  );
 
   const skipTrack = (next) => {
     if (next) {
@@ -64,11 +67,11 @@ function Footer(props) {
     }
 
     return () => {};
-  }, [play, trackIndex]);
+  }, [play, trackIndex, playTrack]);
 
   return (
-    <div>
-      {recentTracks?.items?.length && (
+    <>
+      {recentTracks?.items?.length ? (
         <div className="footer">
           <div className="footer__left">
             <LazyLoadImage
@@ -133,8 +136,10 @@ function Footer(props) {
             <VolumeUp />
           </div>
         </div>
+      ) : (
+        <div className="footer"></div>
       )}
-    </div>
+    </>
   );
 }
 

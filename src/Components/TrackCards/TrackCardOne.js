@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./trackCard.css";
 
 function TrackCard({ track, trackIndex }) {
-  useEffect(() => {
+  const initilize = (params) => {
     document.getElementById(trackIndex).addEventListener("mouseover", (e) => {
       if (document.getElementById(`play-${trackIndex}`))
         document.getElementById(`play-${trackIndex}`).style.opacity = 1;
@@ -20,7 +20,9 @@ function TrackCard({ track, trackIndex }) {
       document.removeEventListener("mouseover", (e) => {});
       document.removeEventListener("mouseleave", (e) => {});
     };
-  }, []);
+  };
+  useEffect(initilize, []);
+
   return (
     <Link to={`/playlist/${track?.id}`}>
       <div id={trackIndex} className="trackcard">

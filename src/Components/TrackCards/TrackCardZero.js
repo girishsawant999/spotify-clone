@@ -4,7 +4,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./trackCard.css";
 
 function TrackCard({ track, trackIndex }) {
-  useEffect(() => {
+  const initilize = (params) => {
     document.getElementById(trackIndex).addEventListener("mouseover", (e) => {
       if (document.getElementById(`play-${trackIndex}`))
         document.getElementById(`play-${trackIndex}`).style.opacity = 1;
@@ -14,12 +14,14 @@ function TrackCard({ track, trackIndex }) {
       if (document.getElementById(`play-${trackIndex}`))
         document.getElementById(`play-${trackIndex}`).style.opacity = 0;
     });
-
     return () => {
       document.removeEventListener("mouseover", (e) => {});
       document.removeEventListener("mouseleave", (e) => {});
     };
-  }, []);
+  };
+
+  useEffect(initilize, []);
+
   return (
     <div id={trackIndex} className="trackcard">
       <LazyLoadImage src={track?.track?.album?.images[1]?.url} />

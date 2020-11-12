@@ -15,7 +15,7 @@ function PlayListView(props) {
   const [playlist, setplaylist] = useState(null);
   const [tracks, settracks] = useState([]);
 
-  useEffect(() => {
+  const initialize = () => {
     dispatch({ type: actions.LOADER_TRUE });
     spotify.getPlaylist(playlist_id).then((response) => {
       setplaylist(response);
@@ -25,8 +25,9 @@ function PlayListView(props) {
       settracks(response.items);
       dispatch({ type: actions.LOADER_FALSE });
     });
-    return () => {};
-  }, []);
+  };
+
+  useEffect(initialize, []);
 
   return (
     <div
