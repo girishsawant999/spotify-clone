@@ -7,7 +7,9 @@ function Player(props) {
   return (
     <div className="player">
       <div className="player_body">
-        <Routes /></div> <Footer />
+        <Routes />
+      </div>
+      <Footer />
     </div>
   );
 }
