@@ -1,8 +1,22 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import "./sidebarOptions.css";
-function SidebarOptions({ Option, Icon }) {
+
+function SidebarOptions({ Option, Icon, url, history }) {
+  const closeSidebar = () => {
+    const element = document.getElementById("sidebar");
+    if (element) {
+      element.classList.toggle("hidden");
+      element.classList.toggle("display");
+    }
+  };
+  const goto = (url) => {
+    closeSidebar();
+    history.push(url);
+  };
+
   return (
-    <div className="sidebarOptions">
+    <div className="sidebarOptions" onClick={() => goto(url)}>
       {Icon && <Icon className="sidebarOptions_icon" />}
       {Icon ? (
         <h4>{Option}</h4>
@@ -13,4 +27,4 @@ function SidebarOptions({ Option, Icon }) {
   );
 }
 
-export default SidebarOptions;
+export default withRouter(SidebarOptions);

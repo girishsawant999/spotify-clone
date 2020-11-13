@@ -3,12 +3,12 @@ import HomeIcon from "@material-ui/icons/Home";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { useDataLayerValue } from "../../DataLayer";
 import "./sidebar.css";
 import SidebarOptions from "./SidebarOptions";
 
-function Sidebar(props) {
+function Sidebar({ history }) {
   const [{ playlists, categories }] = useDataLayerValue();
 
   const closeSidebar = () => {
@@ -21,7 +21,11 @@ function Sidebar(props) {
 
   return (
     <div id="sidebar" className="sidebar hidden">
-      <svg viewBox="0 0 1134 340" class="spotify-logo--text">
+      <svg
+        viewBox="0 0 1134 340"
+        class="spotify-logo--text"
+        onClick={() => history.push("/")}
+      >
         <title>Spotify</title>
         <path
           fill="currentColor"
@@ -33,18 +37,16 @@ function Sidebar(props) {
         <CloseIcon />
       </span>
 
-      <Link to={`/`}>
-        <SidebarOptions Option="Home" Icon={HomeIcon} />
-      </Link>
-      <SidebarOptions Option="Search" Icon={SearchIcon} />
-      <SidebarOptions Option="Your Library" Icon={LibraryMusicIcon} />
+      <SidebarOptions Option="Home" Icon={HomeIcon} url="/" />
+      <SidebarOptions Option="Search" Icon={SearchIcon} url="/" />
+      <SidebarOptions Option="Your Library" Icon={LibraryMusicIcon} url="/" />
 
       <br />
       <strong className="sidebar_title">PLAYLIST</strong>
       <hr />
 
       {playlists?.items?.map((playlist) => (
-        <SidebarOptions Option={playlist.name} />
+        <SidebarOptions Option={playlist.name} url="/" />
       ))}
 
       <br />
@@ -58,4 +60,4 @@ function Sidebar(props) {
   );
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);
