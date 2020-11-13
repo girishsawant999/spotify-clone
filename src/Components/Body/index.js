@@ -5,26 +5,12 @@ import TracksContainer from "../TracksContainer";
 import "./body.css";
 
 function Body() {
-  const [{ recentTracks, spotify, categories }, dispatch] = useDataLayerValue();
+  const [{ recentTracks, spotify }, dispatch] = useDataLayerValue();
   const [cat1, setCat1] = useState({});
   const [cat2, setCat2] = useState({});
   const [cat3, setCat3] = useState({});
   const [cat4, setCat4] = useState({});
   const [cat5, setCat5] = useState({});
-
-  const initialize = () => {
-    if (!categories) {
-      dispatch({ loader: true });
-      spotify.getCategories({ country: "IN" }).then((categories) => {
-        dispatch({
-          categories: categories.categories,
-        });
-        dispatch({ loader: false });
-      });
-    }
-  };
-
-  useEffect(initialize, []);
 
   const getCategoryPlaylists = useCallback(
     (playlist) => {
@@ -40,8 +26,12 @@ function Body() {
   );
 
   useEffect(() => {
-    if (categories?.items && categories.items.length > 0) {
-      let { items } = categories;
+    dispatch({ loader: true });
+    spotify.getCategories({ country: "IN" }).then((categories) => {
+      dispatch({
+        categories: categories.categories,
+      });
+      let { items } = categories.categories;
       getCategoryPlaylists(
         items.splice(getRandomInt(0, items.length - 1), 1)[0]
       ).then((item) => setCat1(item));
@@ -57,9 +47,13 @@ function Body() {
       getCategoryPlaylists(
         items.splice(getRandomInt(0, items.length - 1), 1)[0]
       ).then((item) => setCat5(item));
-    }
+      dispatch({
+        categories: categories.categories,
+      });
+      dispatch({ loader: false });
+    });
     return () => {};
-  }, [categories, getCategoryPlaylists, dispatch]);
+  }, [spotify, getCategoryPlaylists, dispatch]);
 
   const getRandomInt = (min, max) => {
     return parseInt(Math.random() * (max - min) + min);
