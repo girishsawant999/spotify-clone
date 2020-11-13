@@ -14,43 +14,95 @@ import "./footer.css";
 
 let audio = null;
 function Footer(props) {
-  const [{ recentTracks }] = useDataLayerValue();
+  const [{ recentTracks, currentTrack, play }, dispatch] = useDataLayerValue();
   const [value, setValue] = useState(0.3);
   const [trackIndex, settrackIndex] = useState(0);
-  const [play, setplay] = useState(false);
   const [shuffle, setshuffle] = useState(true);
   const [repeat, setrepeat] = useState(true);
 
+  useEffect(() => {
+    if (recentTracks?.items) {
+      dispatch({
+        currentTrack: {
+          trackUrl: recentTracks?.items[0]?.track?.preview_url,
+          trackImg: recentTracks?.items[0]?.track?.album?.images[2]?.url,
+          trackName: recentTracks?.items[0]?.track?.name,
+          trackArtists: recentTracks?.items[0]?.track?.artists,
+        },
+      });
+    }
+    return () => {};
+  }, [recentTracks, dispatch]);
+
   const playTrack = useCallback(
     (state) => {
-      if (state) {
-        audio = new Audio(recentTracks?.items[trackIndex]?.track?.preview_url);
-        audio.play();
-      } else {
-        audio.pause();
+      if (currentTrack) {
+        if (state) {
+          if (audio) audio.pause();
+          audio = new Audio(currentTrack.trackUrl);
+          audio.play();
+        } else {
+          audio.pause();
+        }
       }
     },
-    [recentTracks, trackIndex]
+    [currentTrack]
   );
 
   const skipTrack = (next) => {
     if (next) {
       if (trackIndex !== recentTracks?.items?.length - 1) {
-        if (audio) playTrack(false);
         let r = getRandomInt(0, recentTracks?.items?.length - 1);
         shuffle ? settrackIndex(r) : settrackIndex(trackIndex + 1);
-        setplay(true);
+        dispatch({
+          currentTrack: {
+            trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
+            trackImg:
+              recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
+            trackName: recentTracks?.items[trackIndex]?.track?.name,
+            trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
+          },
+          play: true,
+        });
       } else if (repeat) {
         settrackIndex(0);
+        dispatch({
+          currentTrack: {
+            trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
+            trackImg:
+              recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
+            trackName: recentTracks?.items[trackIndex]?.track?.name,
+            trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
+          },
+          play: true,
+        });
       }
     } else {
       if (trackIndex !== 0) {
-        if (audio) playTrack(false);
         let r = getRandomInt(0, recentTracks?.items?.length - 1);
         shuffle ? settrackIndex(r) : settrackIndex(trackIndex - 1);
-        setplay(true);
+        dispatch({
+          currentTrack: {
+            trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
+            trackImg:
+              recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
+            trackName: recentTracks?.items[trackIndex]?.track?.name,
+            trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
+          },
+          play: true,
+        });
       } else if (repeat) {
         settrackIndex(recentTracks?.items?.length - 1);
+        dispatch({
+          currentTrack: {
+            trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
+            trackImg:
+              recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
+            trackName: recentTracks?.items[trackIndex]?.track?.name,
+            trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
+          },
+          play: true,
+        });
       }
     }
   };
@@ -71,19 +123,14 @@ function Footer(props) {
 
   return (
     <>
-      {recentTracks?.items?.length ? (
+      {currentTrack ? (
         <div className="footer">
           <div className="footer__left">
-            <LazyLoadImage
-              src={
-                recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url
-              }
-              alt=""
-            />
+            <LazyLoadImage src={currentTrack?.trackImg} alt="" />
             <div className="footer__details">
-              <h4>{recentTracks?.items[trackIndex]?.track?.name}</h4>
+              <h4>{currentTrack?.trackName}</h4>
               <p>
-                {recentTracks?.items[trackIndex]?.track?.artists
+                {currentTrack?.trackArtists
                   .map((artist) => artist.name)
                   .join(", ")}
               </p>
@@ -103,12 +150,12 @@ function Footer(props) {
             {play ? (
               <PauseCircleFilledIcon
                 className="main"
-                onClick={() => setplay(false)}
+                onClick={() => dispatch({ play: false })}
               />
             ) : (
               <PlayCircleFilledIcon
                 className="main"
-                onClick={() => setplay(true)}
+                onClick={() => dispatch({ play: true })}
               />
             )}
 

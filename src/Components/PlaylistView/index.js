@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import * as actions from "../../actionTypes";
 import { useDataLayerValue } from "../../DataLayer";
 import BodyHeader from "../BodyHeader";
 import PlaylistCover from "../PlaylistCover";
@@ -16,14 +15,14 @@ function PlayListView(props) {
   const [tracks, settracks] = useState([]);
 
   const initialize = () => {
-    dispatch({ type: actions.LOADER_TRUE });
+    dispatch({ loader: true });
     spotify.getPlaylist(playlist_id).then((response) => {
       setplaylist(response);
-      dispatch({ type: actions.LOADER_FALSE });
+      dispatch({ loader: false });
     });
     spotify.getPlaylistTracks(playlist_id).then((response) => {
       settracks(response.items);
-      dispatch({ type: actions.LOADER_FALSE });
+      dispatch({ loader: false });
     });
   };
 

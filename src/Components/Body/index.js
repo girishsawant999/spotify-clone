@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
-import * as actions from "../../actionTypes";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDataLayerValue } from "../../DataLayer";
 import BodyHeader from "../BodyHeader";
 import TracksContainer from "../TracksContainer";
@@ -15,13 +14,12 @@ function Body() {
 
   const initialize = () => {
     if (!categories) {
-      dispatch({ type: actions.LOADER_TRUE });
+      dispatch({ loader: true });
       spotify.getCategories({ country: "IN" }).then((categories) => {
         dispatch({
-          type: actions.SET_CATEGORIES,
-          payload: categories.categories,
+          categories: categories.categories,
         });
-        dispatch({ type: actions.LOADER_FALSE });
+        dispatch({ loader: false });
       });
     }
   };
@@ -31,9 +29,9 @@ function Body() {
   const getCategoryPlaylists = useCallback(
     (playlist) => {
       return new Promise((resolve) => {
-        dispatch({ type: actions.LOADER_TRUE });
+        dispatch({ loader: true });
         spotify.getCategoryPlaylists(playlist.id).then((item) => {
-          dispatch({ type: actions.LOADER_FALSE });
+          dispatch({ loader: false });
           resolve({ name: playlist.name, item });
         });
       });

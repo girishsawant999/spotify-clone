@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
-import * as actions from "./actionTypes";
 import "./App.css";
 import Login from "./Components/Login";
 import Player from "./Components/Player";
@@ -19,34 +18,32 @@ function App() {
     window.location.hash = "";
 
     dispatch({
-      type: actions.SET_SPOTIFY,
-      payload: spotify,
+      spotify,
     });
 
     if (_token) {
       dispatch({
-        type: actions.SET_TOKEN,
-        payload: _token,
+        token: _token,
       });
 
       spotify.setAccessToken(_token);
 
-      dispatch({ type: actions.LOADER_TRUE });
+      dispatch({ loader: true });
       spotify.getMe().then((user) => {
-        dispatch({ type: actions.SET_USER, payload: user });
-        dispatch({ type: actions.LOADER_FALSE });
+        dispatch({ user });
+        dispatch({ loader: false });
       });
 
-      dispatch({ type: actions.LOADER_TRUE });
+      dispatch({ loader: true });
       spotify.getUserPlaylists().then((playlists) => {
-        dispatch({ type: actions.SET_PLAYLIST, payload: playlists });
-        dispatch({ type: actions.LOADER_FALSE });
+        dispatch({ playlists });
+        dispatch({ loader: false });
       });
 
-      dispatch({ type: actions.LOADER_TRUE });
+      dispatch({ loader: true });
       spotify.getMyRecentlyPlayedTracks().then((recentTracks) => {
-        dispatch({ type: actions.SET_RECENT_TRACKS, payload: recentTracks });
-        dispatch({ type: actions.LOADER_FALSE });
+        dispatch({ recentTracks });
+        dispatch({ loader: false });
       });
     }
   };
