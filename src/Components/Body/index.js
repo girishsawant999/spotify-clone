@@ -14,16 +14,16 @@ function Body() {
   const [cat5, setCat5] = useState({});
 
   const initialize = () => {
-    if(!categories) {
-    dispatch({ type: actions.LOADER_TRUE });
-    spotify.getCategories({ country: "IN" }).then((categories) => {
-      dispatch({
-        type: actions.SET_CATEGORIES,
-        payload: categories.categories,
+    if (!categories) {
+      dispatch({ type: actions.LOADER_TRUE });
+      spotify.getCategories({ country: "IN" }).then((categories) => {
+        dispatch({
+          type: actions.SET_CATEGORIES,
+          payload: categories.categories,
+        });
+        dispatch({ type: actions.LOADER_FALSE });
       });
-      dispatch({ type: actions.LOADER_FALSE });
-    });
-   }
+    }
   };
 
   useEffect(initialize, []);
