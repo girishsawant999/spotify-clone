@@ -5,7 +5,7 @@
   padding: 10px;
   background-color: #040404;
   overflow: overlay;
-  transition: display 200ms ease-in-out;
+  transition: 200ms ease-in-out;
 }
 .hidden {
   display: initial;

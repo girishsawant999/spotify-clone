@@ -53,8 +53,7 @@
   background-color: #1db954;
   border-radius: 100px;
   padding: 2px;
-  transition: opacity 100ms ease-in-out;
-  transition: visibility 100ms ease-in;
+  transition: 100ms ease-in-out;
   opacity: 0;
 }
 .trackcard .playIcon svg {

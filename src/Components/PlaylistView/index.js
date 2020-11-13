@@ -42,9 +42,9 @@ function PlayListView(props) {
       <BodyHeader />
       <PlaylistCover playlist={playlist} />
       <div className="playlist__trackscontainer">
-        {tracks.map((track) => (
-          <TrackRow track={track} />
-        ))}
+        {tracks.map(
+          (track) => track?.track?.preview_url && <TrackRow track={track} />
+        )}
       </div>
     </div>
   );

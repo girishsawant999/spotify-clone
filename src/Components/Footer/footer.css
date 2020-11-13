@@ -24,14 +24,18 @@
 }
 .footer__left .footer__details {
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 .footer__left .footer__details h4 {
   margin-bottom: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .footer__left .footer__details p {
   font-size: small;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .footer__center {
   flex: auto;
@@ -43,7 +47,7 @@
 .footer__center svg {
   color: white;
   margin: 0px 5px;
-  transition: transform 100ms ease-in-out;
+  transition: 200ms ease-in-out;
 }
 .footer__center svg:hover {
   transform: scale(1.1);
@@ -74,5 +78,8 @@
 @media (max-width: 768px) {
   .footer__right {
     display: none;
+  }
+  .footer__left img {
+    margin-right: 10px;
   }
 }

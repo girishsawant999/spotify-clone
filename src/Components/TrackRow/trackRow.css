@@ -45,7 +45,7 @@
   background-color: #198e42;
   padding: 5px;
   border-radius: 99px;
-  transition: transform 200ms ease-in-out;
+  transition: 200ms ease-in-out;
 }
 .TrackRow__playButton svg:hover {
   transform: scale(1.2);
