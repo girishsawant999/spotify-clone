@@ -3,10 +3,13 @@
   bottom: 0px;
   height: 65px;
   width: 97%;
-  background-color: #282828;
+  background: #282828;
   padding: 20px;
   display: flex;
   justify-content: space-between;
+}
+.footer_empty {
+  background: #121212 linear-gradient(360deg, #121212, #121212, #1db9545c);
 }
 .footer__left {
   flex: 0.6 1;
