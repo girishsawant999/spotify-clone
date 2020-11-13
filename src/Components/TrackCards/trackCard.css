@@ -54,7 +54,7 @@
   border-radius: 100px;
   padding: 2px;
   transition: 100ms ease-in-out;
-  opacity: 0;
+  /* opacity: 0; */
 }
 .trackcard .playIcon svg {
   font-size: xx-large;
