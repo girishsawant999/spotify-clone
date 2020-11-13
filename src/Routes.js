@@ -9,8 +9,8 @@ function Routes(props) {
     <Router>
       <Sidebar />
       <Switch>
-        <Route exact path="/" component={Body} />
         <div class="routes">
+          <Route exact path="/" component={Body} />
           <Route path="/playlist/:playlist_id" component={PlayListView} />
         </div>
       </Switch>

@@ -4,6 +4,7 @@
   color: white;
   padding: 30px;
   overflow: overlay;
+  height: 100%;
 }
 .body__header {
   display: flex;
