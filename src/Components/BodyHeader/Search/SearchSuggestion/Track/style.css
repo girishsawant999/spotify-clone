@@ -1,0 +1,28 @@
+.Track {
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.Track:hover {
+  background: #29292917;
+}
+.Track .track_img {
+  flex: 0.2 1;
+  display: flex;
+  justify-content: center;
+  max-width: 40px;
+  margin-right: 10px;
+}
+.Track .track_img > img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.Track .track_name {
+  flex: 0.8 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

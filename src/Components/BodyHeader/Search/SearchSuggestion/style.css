@@ -1,0 +1,15 @@
+.search_suggestions {
+  background: white;
+  position: absolute;
+  color: black;
+  top: 44px;
+  left: 0px;
+  right: 0px;
+  padding: 10px;
+  border-radius: 0px 0px 15px 15px;
+  z-index: 1;
+}
+.search_suggestions_open {
+  box-shadow: none;
+  border-radius: 15px 15px 0px 0px;
+}

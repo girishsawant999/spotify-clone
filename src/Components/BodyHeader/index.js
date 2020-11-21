@@ -1,10 +1,10 @@
 import MenuIcon from "@material-ui/icons/Menu";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
-import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDataLayerValue } from "../../DataLayer";
 import "../Body/body.css";
+import SearchSuggestion from "./Search/SearchSuggestion";
 
 function BodyHeader(props) {
   const [{ user }] = useDataLayerValue();
@@ -22,24 +22,7 @@ function BodyHeader(props) {
       <span id="menuBtn" className="body__menu" onClick={openSidebar}>
         <MenuIcon />
       </span>
-      <div id="searchInput" className="body__search">
-        <SearchIcon className="body__SearchIcon" />
-        <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Search songs, playlist, artists"
-          autoComplete="off"
-          onFocus={() => {
-            document.getElementById("header__user").style.display = "none";
-            document.getElementById("searchInput").style.maxWidth = "100%";
-          }}
-          onBlur={() => {
-            document.getElementById("header__user").style.display = "flex";
-            document.getElementById("searchInput").style.maxWidth = "300px";
-          }}
-        />
-      </div>
+      <SearchSuggestion />
       <div id="header__user" className="body__user">
         <h4>{user?.display_name}</h4>
         {user?.images?.length ? (
