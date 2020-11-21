@@ -6,8 +6,8 @@ function SidebarOptions({ Option, Icon, url, history }) {
   const closeSidebar = () => {
     const element = document.getElementById("sidebar");
     if (element) {
-      element.classList.toggle("hidden");
-      element.classList.toggle("display");
+      element.classList.toggle("m-hidden");
+      element.classList.toggle("m-display");
     }
   };
   const goto = (url) => {

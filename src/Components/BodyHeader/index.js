@@ -12,8 +12,8 @@ function BodyHeader(props) {
   const openSidebar = () => {
     const element = document.getElementById("sidebar");
     if (element) {
-      element.classList.toggle("hidden");
-      element.classList.toggle("display");
+      element.classList.toggle("m-hidden");
+      element.classList.toggle("m-display");
     }
   };
 

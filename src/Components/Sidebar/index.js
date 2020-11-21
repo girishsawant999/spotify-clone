@@ -14,13 +14,13 @@ function Sidebar({ history }) {
   const closeSidebar = () => {
     const element = document.getElementById("sidebar");
     if (element) {
-      element.classList.toggle("hidden");
-      element.classList.toggle("display");
+      element.classList.toggle("m-hidden");
+      element.classList.toggle("m-display");
     }
   };
 
   return (
-    <div id="sidebar" className="sidebar hidden">
+    <div id="sidebar" className="sidebar m-hidden">
       <svg
         viewBox="0 0 1134 340"
         class="spotify-logo--text"

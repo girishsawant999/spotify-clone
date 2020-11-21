@@ -15,9 +15,9 @@ function SearchSuggestion(props) {
       element.classList.add("search_suggestions_open");
       document.getElementById("header__user").style.display = "none";
       document.getElementById("searchInput").style.maxWidth = "100%";
+      document.getElementById("menuBtn").classList.add("hidden");
       window.addEventListener("click", (e) => {
         if (!document.getElementById("searchInput").contains(e.target)) {
-          console.log("In Box :>> ");
           setshowSuggestions(false);
         }
       });
@@ -25,6 +25,7 @@ function SearchSuggestion(props) {
       element.classList.remove("search_suggestions_open");
       document.getElementById("header__user").style.display = "flex";
       document.getElementById("searchInput").style.maxWidth = "300px";
+      document.getElementById("menuBtn").classList.remove("hidden");
       window.removeEventListener("click", (e) => {});
       settracks([]);
     }
@@ -35,7 +36,8 @@ function SearchSuggestion(props) {
     if (query.length < 3) return;
     spotify.search(query, ["track"], { limit: 5 }).then((res) => {
       settracks(res?.tracks?.items);
-      setshowSuggestions(true);
+      if (res?.tracks?.items.length > 0) setshowSuggestions(true);
+      else setshowSuggestions(false);
     });
   };
 

@@ -29,14 +29,13 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: white;
+  background: hsl(0deg 0% 16%);
   max-width: 300px;
   min-width: 100px;
   border-radius: 99px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
-  transition: all 300ms ease-in-out;
+  transition: 200ms ease-in-out;
   position: relative;
-  transition: border-radius 0ms;
 }
 .body__SearchIcon {
   margin: 0px 10px;
@@ -62,13 +61,15 @@
   border: none;
   width: 100%;
   outline: none;
+  background: hsl(0deg 0% 16%);
+  color: white;
 }
 .body__user {
   display: flex;
   flex: auto;
   justify-content: flex-end;
   align-items: center;
-  background-color: black;
+  background: #292929;
   border-radius: 99px;
   max-width: fit-content;
   margin-left: 10px;
@@ -76,7 +77,7 @@
 }
 
 .body__user > svg {
-  background-color: #333333;
+  background: radial-gradient(#000, #052f14, #1db954);
   border-radius: 99px;
   padding: 10px;
 }

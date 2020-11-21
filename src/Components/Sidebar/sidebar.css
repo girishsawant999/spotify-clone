@@ -7,10 +7,10 @@
   overflow: overlay;
   transition: 200ms ease-in-out;
 }
-.hidden {
+.m-hidden {
   display: initial;
 }
-.display {
+.m-display {
   display: initial;
 }
 .sidebar .sidebar__menu_close {
@@ -45,10 +45,10 @@
     min-width: calc(100vw - 40px);
     padding: 20px;
   }
-  .hidden {
+  .m-hidden {
     display: none;
   }
-  .display {
+  .m-display {
     display: block;
   }
   .sidebar .sidebar__menu_close {
