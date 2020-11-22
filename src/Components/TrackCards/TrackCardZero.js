@@ -32,7 +32,9 @@ function TrackCard({ track, trackIndex }) {
       onMouseOver={() => setshowButton(true)}
       onMouseLeave={() => setshowButton(false)}
     >
-      <LazyLoadImage src={track?.track?.album?.images[1]?.url} />
+      <div className="track_img">
+        <LazyLoadImage src={track?.track?.album?.images[1]?.url} />
+      </div>
       <h4>{track?.track?.name}</h4>
       <p>{track?.track?.artists.map((artist) => artist.name).join(", ")}</p>
       {(showButton || currentTrack?.trackUrl === track?.track?.preview_url) && (
