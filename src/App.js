@@ -14,7 +14,9 @@ function App() {
 
   const initialize = () => {
     const hash = getUrlToken();
-    const _token = hash.access_token;
+    const _token = localStorage.getItem("_token")
+      ? localStorage.getItem("_token")
+      : hash.access_token;
     window.location.hash = "";
 
     dispatch({
@@ -25,26 +27,40 @@ function App() {
       dispatch({
         token: _token,
       });
+      localStorage.setItem("_token", _token);
 
       spotify.setAccessToken(_token);
 
       dispatch({ loader: true });
-      spotify.getMe().then((user) => {
-        dispatch({ user });
-        dispatch({ loader: false });
-      });
+      spotify
+        .getMe()
+        .then((user) => {
+          dispatch({ user });
+          spotify.getUserPlaylists().then((playlists) => {
+            dispatch({ playlists });
+            dispatch({ loader: false });
+          });
 
-      dispatch({ loader: true });
-      spotify.getUserPlaylists().then((playlists) => {
-        dispatch({ playlists });
-        dispatch({ loader: false });
-      });
+          dispatch({ loader: true });
+          spotify.getMyRecentlyPlayedTracks().then((recentTracks) => {
+            dispatch({ recentTracks });
+            dispatch({ loader: false });
+          });
 
-      dispatch({ loader: true });
-      spotify.getMyRecentlyPlayedTracks().then((recentTracks) => {
-        dispatch({ recentTracks });
-        dispatch({ loader: false });
-      });
+          spotify.getCategories({ country: "IN" }).then((categories) => {
+            dispatch({
+              categories: categories.categories,
+            });
+          });
+        })
+        .catch((res) => {
+          if (res.status === 401) {
+            dispatch({
+              token: null,
+            });
+            localStorage.removeItem("_token");
+          }
+        });
     }
   };
 

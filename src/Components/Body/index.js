@@ -28,9 +28,6 @@ function Body() {
   useEffect(() => {
     dispatch({ loader: true });
     spotify.getCategories({ country: "IN" }).then((categories) => {
-      dispatch({
-        categories: categories.categories,
-      });
       let { items } = categories.categories;
       getCategoryPlaylists(
         items.splice(getRandomInt(0, items.length - 1), 1)[0]
