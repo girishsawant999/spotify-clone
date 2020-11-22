@@ -18,7 +18,9 @@ function Track({ track, dispatch }) {
     <div className="Track" onClick={() => playTrack(track)}>
       <div className="track_img">
         <div className="track_img_container">
-          <img src={track?.album?.images[2]?.url} alt="" />
+          {track?.album?.images[2]?.url && (
+            <img src={track?.album?.images[2]?.url} alt="" />
+          )}
         </div>
       </div>
       <div className="track_name">{track.name}</div>

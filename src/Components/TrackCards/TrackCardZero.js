@@ -33,7 +33,9 @@ function TrackCard({ track, trackIndex }) {
       onMouseLeave={() => setshowButton(false)}
     >
       <div className="track_img">
-        <LazyLoadImage src={track?.track?.album?.images[1]?.url} />
+        {track?.track?.album?.images[1]?.url && (
+          <LazyLoadImage src={track?.track?.album?.images[1]?.url} />
+        )}
       </div>
       <h4>{track?.track?.name}</h4>
       <p>{track?.track?.artists.map((artist) => artist.name).join(", ")}</p>

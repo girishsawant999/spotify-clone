@@ -33,7 +33,10 @@ function SearchSuggestion(props) {
   }, [showSuggestions]);
 
   const onInputSearch = (query) => {
-    if (query.length < 3) return;
+    if (query.length < 3) {
+      setshowSuggestions(false);
+      return;
+    }
     spotify.search(query, ["track"], { limit: 5 }).then((res) => {
       settracks(res?.tracks?.items);
       if (res?.tracks?.items.length > 0) setshowSuggestions(true);
