@@ -17,7 +17,9 @@ function Track({ track, dispatch }) {
   return (
     <div className="Track" onClick={() => playTrack(track)}>
       <div className="track_img">
-        <img src={track?.album?.images[2]?.url} alt="track" />
+        <div className="track_img_container">
+          <img src={track?.album?.images[2]?.url} alt="" />
+        </div>
       </div>
       <div className="track_name">{track.name}</div>
     </div>
