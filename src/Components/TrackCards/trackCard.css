@@ -29,7 +29,8 @@
   height: 150px;
   min-width: 150px;
   background: #00000024;
-  background-image: url("../../Assets/images/music-tone.svg");
+  background-image: url("../../Assets/images/disc.svg");
+  background-size: 100% 100%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .trackcard > .track_img > img {
