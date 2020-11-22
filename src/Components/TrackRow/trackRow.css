@@ -20,7 +20,7 @@
   display: flex;
   margin: auto;
   background: #00000024;
-  background-image: url("/src/Assets/images/disc.svg");
+  background-image: url("../../Assets/images/disc.svg");
   background-size: 100% 100%;
   box-shadow: 0px 0px 10px hsl(0deg 0% 16%);
 }
