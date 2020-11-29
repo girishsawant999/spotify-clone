@@ -21,7 +21,7 @@ function Footer(props) {
   const [repeat, setrepeat] = useState(true);
 
   useEffect(() => {
-    if (recentTracks?.items) {
+    if (recentTracks?.items?.length > 0) {
       dispatch({
         currentTrack: {
           trackUrl: recentTracks?.items[0]?.track?.preview_url,
@@ -49,60 +49,74 @@ function Footer(props) {
     [currentTrack]
   );
 
+  useEffect(() => {
+    const element = document.getElementById("player_body");
+    if (currentTrack && element.classList.value.includes("player_body_h100")) {
+      element && element.classList.remove("player_body_h100");
+    } else if (!element.classList.value.includes("player_body_h100")) {
+      element && element.classList.add("player_body_h100");
+    }
+    return () => {};
+  }, [currentTrack]);
+
   const skipTrack = (next) => {
     if (next) {
       if (trackIndex !== recentTracks?.items?.length - 1) {
         let r = getRandomInt(0, recentTracks?.items?.length - 1);
         shuffle ? settrackIndex(r) : settrackIndex(trackIndex + 1);
-        dispatch({
-          currentTrack: {
-            trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
-            trackImg:
-              recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
-            trackName: recentTracks?.items[trackIndex]?.track?.name,
-            trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
-          },
-          play: true,
-        });
+        if (recentTracks?.items[trackIndex]?.track?.name)
+          dispatch({
+            currentTrack: {
+              trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
+              trackImg:
+                recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
+              trackName: recentTracks?.items[trackIndex]?.track?.name,
+              trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
+            },
+            play: true,
+          });
       } else if (repeat) {
         settrackIndex(0);
-        dispatch({
-          currentTrack: {
-            trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
-            trackImg:
-              recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
-            trackName: recentTracks?.items[trackIndex]?.track?.name,
-            trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
-          },
-          play: true,
-        });
+        if (recentTracks?.items[trackIndex]?.track?.name)
+          dispatch({
+            currentTrack: {
+              trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
+              trackImg:
+                recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
+              trackName: recentTracks?.items[trackIndex]?.track?.name,
+              trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
+            },
+            play: true,
+          });
       }
     } else {
       if (trackIndex !== 0) {
         let r = getRandomInt(0, recentTracks?.items?.length - 1);
         shuffle ? settrackIndex(r) : settrackIndex(trackIndex - 1);
-        dispatch({
-          currentTrack: {
-            trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
-            trackImg:
-              recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
-            trackName: recentTracks?.items[trackIndex]?.track?.name,
-            trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
-          },
-          play: true,
-        });
+        if (recentTracks?.items[trackIndex]?.track?.name)
+          dispatch({
+            currentTrack: {
+              trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
+              trackImg:
+                recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
+              trackName: recentTracks?.items[trackIndex]?.track?.name,
+              trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
+            },
+            play: true,
+          });
       } else if (repeat) {
         settrackIndex(recentTracks?.items?.length - 1);
-        dispatch({
-          currentTrack: {
-            trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
-            trackImg:
-              recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
-            trackName: recentTracks?.items[trackIndex]?.track?.name,
-            trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
-          },
-          play: true,
-        });
+        if (recentTracks?.items[trackIndex]?.track?.name)
+          dispatch({
+            currentTrack: {
+              trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
+              trackImg:
+                recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
+              trackName: recentTracks?.items[trackIndex]?.track?.name,
+              trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
+            },
+            play: true,
+          });
       }
     }
   };
@@ -123,7 +137,7 @@ function Footer(props) {
 
   return (
     <>
-      {currentTrack ? (
+      {currentTrack && (
         <div className="footer">
           <div className="footer__left">
             <LazyLoadImage src={currentTrack?.trackImg} alt="" />
@@ -183,8 +197,6 @@ function Footer(props) {
             <VolumeUp />
           </div>
         </div>
-      ) : (
-        <div className="footer footer_empty"></div>
       )}
     </>
   );

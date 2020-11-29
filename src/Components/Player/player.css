@@ -6,6 +6,9 @@
   display: flex;
   height: calc(100vh - 105px);
 }
+.player_body_h100 {
+  height: 100vh;
+}
 .routes {
   flex: 0.8;
   background: #121212; /* linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1)); */

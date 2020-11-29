@@ -65,6 +65,7 @@ function SearchSuggestion(props) {
           placeholder="Search songs, playlist, artists"
           autoComplete="off"
           onInput={(e) => onInputSearch(e.target.value)}
+          onFocus={(e) => onInputSearch(e.target.value)}
         />
       </form>
       {showSuggestions && (

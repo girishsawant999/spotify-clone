@@ -6,7 +6,7 @@ import "./player.css";
 function Player(props) {
   return (
     <div className="player">
-      <div className="player_body">
+      <div id="player_body" className="player_body player_body_h100">
         <Routes />
       </div>
       <Footer />
