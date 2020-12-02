@@ -6,7 +6,7 @@ import "./login.css";
 function Login(props) {
   return (
     <div className="login">
-      <video src={logo} alt="logo" autoPlay muted loop />
+      <video src={logo} alt="logo" autoPlay loop />
       <a href={loginUrl}>LOGIN WITH SPOTIFY</a>
     </div>
   );

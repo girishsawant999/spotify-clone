@@ -1,0 +1,40 @@
+.body__user {
+  display: flex;
+  flex: auto;
+  justify-content: flex-end;
+  align-items: center;
+  background: #292929;
+  border-radius: 99px;
+  max-width: fit-content;
+  margin-left: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+  position: relative;
+  transition: 200ms;
+}
+.body__user > button {
+  padding: 0px;
+}
+.body__user > button > span > h4 {
+  text-transform: none;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.body__user > button > span > svg {
+  background: radial-gradient(#000, #052f14, #1db954);
+  border-radius: 99px;
+  padding: 10px;
+  color: white;
+}
+
+.body__user > button > span > img {
+  margin-left: 10px;
+  border-radius: 99px;
+  height: 44px;
+  width: 44px;
+}
+.body__user_popup_open {
+  border-radius: 15px 15px 0px 0px;
+}

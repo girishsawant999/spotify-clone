@@ -64,35 +64,6 @@
   background: hsl(0deg 0% 16%);
   color: white;
 }
-.body__user {
-  display: flex;
-  flex: auto;
-  justify-content: flex-end;
-  align-items: center;
-  background: #292929;
-  border-radius: 99px;
-  max-width: fit-content;
-  margin-left: 10px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
-}
-
-.body__user > svg {
-  background: radial-gradient(#000, #052f14, #1db954);
-  border-radius: 99px;
-  padding: 10px;
-}
-.body__user > img {
-  margin-left: 10px;
-  border-radius: 99px;
-  height: 44px;
-  width: 44px;
-}
-.body__user > h4 {
-  margin-left: 10px;
-  margin-right: 10px;
-  white-space: nowrap;
-}
-
 @media (max-width: 768px) {
   .body {
     flex: auto;
