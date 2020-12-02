@@ -1,13 +1,12 @@
 import React from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import logo from "../../Assets/images/logo.gif";
+import logo from "../../Assets/images/logo.mp4";
 import { loginUrl } from "../../Spotify";
 import "./login.css";
 
 function Login(props) {
   return (
     <div className="login">
-      <LazyLoadImage src={logo} alt="logo" />
+      <video src={logo} alt="logo" autoPlay muted loop />
       <a href={loginUrl}>LOGIN WITH SPOTIFY</a>
     </div>
   );
