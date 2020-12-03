@@ -4,7 +4,6 @@ import logo from "../../Assets/images/logo.gif";
 import { loginUrl } from "../../Spotify";
 import "./login.css";
 
-
 function Login(props) {
   return (
     <div className="login">
