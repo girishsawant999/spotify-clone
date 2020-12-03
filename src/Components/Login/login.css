@@ -4,9 +4,9 @@
   height: 100vh;
   background-color: black;
 }
-.login > video {
+.login > img {
   height: 65vh;
-  width: 100vw;
+  width: 100%;
 }
 
 .login > a {
