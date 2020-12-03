@@ -1,5 +1,6 @@
 import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Divider from "@material-ui/core/Divider";
 import Grow from "@material-ui/core/Grow";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
@@ -102,8 +103,10 @@ export default function User(props) {
                   id="menu-list-grow"
                   onKeyDown={handleListKeyDown}
                 >
+                  <Divider variant="middle"/>
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                   {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
+                  <Divider variant="middle"/>
                   <MenuItem id="logout" onClick={handleClose}>
                     Logout
                   </MenuItem>

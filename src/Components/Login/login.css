@@ -8,16 +8,3 @@
   height: 65vh;
   width: 100%;
 }
-
-.login > a {
-  padding: 20px;
-  background-color: #1db954;
-  border-radius: 99px;
-  color: white;
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.login > a:focus {
-  outline: none;
-}
