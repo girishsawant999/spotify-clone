@@ -103,10 +103,10 @@ export default function User(props) {
                   id="menu-list-grow"
                   onKeyDown={handleListKeyDown}
                 >
-                  <Divider variant="middle"/>
+                  <Divider variant="middle" />
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                   {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
-                  <Divider variant="middle"/>
+                  <Divider variant="middle" />
                   <MenuItem id="logout" onClick={handleClose}>
                     Logout
                   </MenuItem>
