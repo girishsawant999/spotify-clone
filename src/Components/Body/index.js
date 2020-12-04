@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDataLayerValue } from "../../DataLayer";
 import BodyHeader from "../BodyHeader";
-import TracksContainer from "../TracksContainer";
+import CategoryContainer from "../CategoryContainer";
 import "./body.css";
 
 function Body() {
@@ -59,34 +59,34 @@ function Body() {
   return (
     <div className="body">
       <BodyHeader />
-      <TracksContainer
-        tracks={recentTracks}
+      <CategoryContainer
+        category={recentTracks}
         name={"Recently Played"}
         type={0}
       />
 
-      <TracksContainer
-        tracks={cat1?.item?.playlists}
+      <CategoryContainer
+        category={cat1?.item?.playlists}
         name={cat1.name}
         type={1}
       />
-      <TracksContainer
-        tracks={cat2?.item?.playlists}
+      <CategoryContainer
+        category={cat2?.item?.playlists}
         name={cat2.name}
         type={1}
       />
-      <TracksContainer
-        tracks={cat3?.item?.playlists}
+      <CategoryContainer
+        category={cat3?.item?.playlists}
         name={cat3.name}
         type={1}
       />
-      <TracksContainer
-        tracks={cat4?.item?.playlists}
+      <CategoryContainer
+        category={cat4?.item?.playlists}
         name={cat4.name}
         type={1}
       />
-      <TracksContainer
-        tracks={cat5?.item?.playlists}
+      <CategoryContainer
+        category={cat5?.item?.playlists}
         name={cat5.name}
         type={1}
       />
