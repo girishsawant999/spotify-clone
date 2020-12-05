@@ -4,6 +4,7 @@ import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Disc from "../../Assets/images/disc.svg";
 import { useDataLayerValue } from "../../DataLayer";
+import AnimatedPlaying from "../AnimatedPlaying";
 
 const useStyles = makeStyles((theme) => ({
   buttonBase: { margin: "0px 5px", padding: "4px", borderRadius: "5px" },
@@ -16,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "hsl(0deg 0% 16%)",
   },
   card_img_div: {
-    width: "55px",
     height: "55px",
     borderRadius: "50%",
     background: "#00000024",
@@ -42,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
   },
+  card_playing_status: {
+    height: "55px",
+  },
 }));
 
 function RecentTrackCard({ track, trackIndex }) {
@@ -65,7 +68,8 @@ function RecentTrackCard({ track, trackIndex }) {
   };
 
   const clickAction = (track) => {
-    if (play) pauseTrack(track);
+    if (play && currentTrack?.trackUrl === track?.track?.preview_url)
+      pauseTrack(track);
     else playTrack(track);
   };
 
@@ -91,10 +95,10 @@ function RecentTrackCard({ track, trackIndex }) {
             {track?.track?.artists.map((artist) => artist.name).join(", ")}
           </Typography>
         </Grid>
-        <Grid item xs={1}>
-          {play && currentTrack?.trackUrl === track?.track?.preview_url
-            ? null
-            : null}
+        <Grid item xs={1} className={classes.card_playing_status}>
+          {play && currentTrack?.trackUrl === track?.track?.preview_url && (
+            <AnimatedPlaying />
+          )}
         </Grid>
       </Grid>
     </ButtonBase>

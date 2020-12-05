@@ -12,7 +12,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDataLayerValue } from "../../DataLayer";
 import "./footer.css";
 
-let audio = null;
+let audio = new Audio();
 function Footer(props) {
   const [{ recentTracks, currentTrack, play }, dispatch] = useDataLayerValue();
   const [value, setValue] = useState(0.3);
@@ -20,119 +20,84 @@ function Footer(props) {
   const [shuffle, setshuffle] = useState(true);
   const [repeat, setrepeat] = useState(true);
 
-  useEffect(() => {
-    if (recentTracks?.items?.length > 0) {
-      dispatch({
-        currentTrack: {
-          trackUrl: recentTracks?.items[0]?.track?.preview_url,
-          trackImg: recentTracks?.items[0]?.track?.album?.images[2]?.url,
-          trackName: recentTracks?.items[0]?.track?.name,
-          trackArtists: recentTracks?.items[0]?.track?.artists,
-        },
-      });
-    }
-    return () => {};
-  }, [recentTracks, dispatch]);
+  const skipTrack = useCallback(
+    (next) => {
+      if (next) {
+        if (trackIndex !== recentTracks?.items?.length - 1) {
+          let r = getRandomInt(0, recentTracks?.items?.length - 1);
+          shuffle ? settrackIndex(r) : settrackIndex(trackIndex + 1);
+        } else if (repeat) {
+          settrackIndex(0);
+        }
+      } else {
+        if (trackIndex !== 0) {
+          let r = getRandomInt(0, recentTracks?.items?.length - 1);
+          shuffle ? settrackIndex(r) : settrackIndex(trackIndex - 1);
+        } else if (repeat) {
+          settrackIndex(recentTracks?.items?.length - 1);
+        }
+      }
+    },
+    [recentTracks, repeat, shuffle, trackIndex]
+  );
+
+  const onAudioEnded = useCallback(
+    (audio) => {
+      skipTrack(true);
+      audio.removeEventListener("ended", () => onAudioEnded(audio));
+    },
+    [skipTrack]
+  );
 
   const playTrack = useCallback(
     (state) => {
       if (currentTrack) {
         if (state) {
-          if (audio) audio.pause();
-          audio = new Audio(currentTrack.trackUrl);
+          audio.src = currentTrack.trackUrl;
           audio.play();
+          audio.addEventListener("ended", () => onAudioEnded(audio));
         } else {
           audio.pause();
         }
       }
     },
-    [currentTrack]
+    [currentTrack, onAudioEnded]
   );
-
-  useEffect(() => {
-    const element = document.getElementById("player_body");
-    if (currentTrack && element.classList.value.includes("player_body_h100")) {
-      element && element.classList.remove("player_body_h100");
-    } else if (!element.classList.value.includes("player_body_h100")) {
-      element && element.classList.add("player_body_h100");
-    }
-    return () => {};
-  }, [currentTrack]);
-
-  const skipTrack = (next) => {
-    if (next) {
-      if (trackIndex !== recentTracks?.items?.length - 1) {
-        let r = getRandomInt(0, recentTracks?.items?.length - 1);
-        shuffle ? settrackIndex(r) : settrackIndex(trackIndex + 1);
-        if (recentTracks?.items[trackIndex]?.track?.name)
-          dispatch({
-            currentTrack: {
-              trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
-              trackImg:
-                recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
-              trackName: recentTracks?.items[trackIndex]?.track?.name,
-              trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
-            },
-            play: true,
-          });
-      } else if (repeat) {
-        settrackIndex(0);
-        if (recentTracks?.items[trackIndex]?.track?.name)
-          dispatch({
-            currentTrack: {
-              trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
-              trackImg:
-                recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
-              trackName: recentTracks?.items[trackIndex]?.track?.name,
-              trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
-            },
-            play: true,
-          });
-      }
-    } else {
-      if (trackIndex !== 0) {
-        let r = getRandomInt(0, recentTracks?.items?.length - 1);
-        shuffle ? settrackIndex(r) : settrackIndex(trackIndex - 1);
-        if (recentTracks?.items[trackIndex]?.track?.name)
-          dispatch({
-            currentTrack: {
-              trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
-              trackImg:
-                recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
-              trackName: recentTracks?.items[trackIndex]?.track?.name,
-              trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
-            },
-            play: true,
-          });
-      } else if (repeat) {
-        settrackIndex(recentTracks?.items?.length - 1);
-        if (recentTracks?.items[trackIndex]?.track?.name)
-          dispatch({
-            currentTrack: {
-              trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
-              trackImg:
-                recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
-              trackName: recentTracks?.items[trackIndex]?.track?.name,
-              trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
-            },
-            play: true,
-          });
-      }
-    }
-  };
 
   const getRandomInt = (min, max) => {
     return parseInt(Math.random() * (max - min) + min);
   };
 
   useEffect(() => {
-    if (play) {
-      playTrack(play);
-    } else {
-      if (audio) playTrack(play);
+    if (recentTracks?.items?.length > 0) {
+      dispatch({
+        currentTrack: {
+          trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
+          trackImg:
+            recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
+          trackName: recentTracks?.items[trackIndex]?.track?.name,
+          trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
+        },
+      });
     }
-
     return () => {};
+  }, [recentTracks, dispatch, trackIndex]);
+
+  useEffect(() => {
+    const element = document.getElementById("player_body");
+    if (currentTrack && element.classList.value.includes("player_body_h100")) {
+      element && element.classList.remove("player_body_h100");
+    } else if (
+      !currentTrack &&
+      !element.classList.value.includes("player_body_h100")
+    ) {
+      element && element.classList.add("player_body_h100");
+    }
+    return () => {};
+  }, [currentTrack]);
+
+  useEffect(() => {
+    playTrack(play);
   }, [play, trackIndex, playTrack]);
 
   return (

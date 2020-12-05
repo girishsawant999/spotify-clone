@@ -25,7 +25,7 @@ function TrackRow({ track }) {
   };
 
   return (
-    <div class="TrackRow">
+    <div className="TrackRow">
       <div className="TrackRow__img">
         <div className="TrackRow__img_conatiner">
           <LazyLoadImage src={track?.track?.album?.images[2]?.url} alt="" />

@@ -8,12 +8,12 @@ function Routes(props) {
   return (
     <Router>
       <Sidebar />
-      <Switch>
-        <div class="routes">
+      <div className="routes">
+        <Switch>
           <Route exact path="/" component={Body} />
           <Route path="/playlist/:playlist_id" component={PlayListView} />
-        </div>
-      </Switch>
+        </Switch>
+      </div>
     </Router>
   );
 }

@@ -1,25 +1,66 @@
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import React from "react";
-import "../Body/body.css";
+// import "../Body/body.css";
 import PlaylistCard from "../PlaylistCard";
 import RecentTrackCard from "../RecentTrackCard";
 
+const useStyles = makeStyles((theme) => ({
+  tittle: {
+    margin: "15px 0",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+    fontSize: "1.5em",
+    fontWeight: "bold",
+  },
+  CardsContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    overflowX: "auto",
+    borderRadius: "10px",
+    scrollBehavior: "smooth",
+  },
+  displayInherit: {
+    display: "inherit",
+  },
+}));
+
 function CategoryContainer({ category, name, type }) {
+  const classes = useStyles();
+
   return (
-    category?.items?.length > 0 && (
-      <div className="categoryRow">
-        <h2>{name}</h2>
-        <div className="trackCardsContainer">
-          {type === 0 &&
-            category?.items?.map((item, index) => (
-              <RecentTrackCard track={item} trackIndex={index + name} />
-            ))}
-          {type === 1 &&
-            category?.items?.map((item, index) => (
-              <PlaylistCard playlist={item} />
-            ))}
-        </div>
-      </div>
-    )
+    <Grid key={name} id={name}>
+      {category?.items?.length > 0 && (
+        <Typography className={classes.tittle}>{name}</Typography>
+      )}
+      <Grid className={classes.CardsContainer}>
+        {type === 0 && category?.items?.length > 0 && (
+          <Grid container className={classes.displayInherit}>
+            <Box mb={1} className={classes.displayInherit}>
+              {category?.items
+                ?.slice(0, category?.items?.length / 2)
+                .map((item, index) => (
+                  <RecentTrackCard track={item} key={index + name} />
+                ))}
+            </Box>
+            <Box className={classes.displayInherit}>
+              {category?.items
+                ?.slice(category?.items?.length / 2)
+                .map((item, index) => (
+                  <RecentTrackCard track={item} key={index + name} />
+                ))}
+            </Box>
+          </Grid>
+        )}
+        {type === 1 &&
+          category?.items?.map((item, index) => (
+            <PlaylistCard key={`key-${index}`} playlist={item} />
+          ))}
+      </Grid>
+    </Grid>
   );
 }
 

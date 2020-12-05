@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import "./sidebarOptions.css";
 
-function SidebarOptions({ Option, Icon, url, history }) {
+function SidebarOptions({ Option, index, Icon, url, history }) {
   const closeSidebar = () => {
     const element = document.getElementById("sidebar");
     if (element) {
@@ -14,7 +14,6 @@ function SidebarOptions({ Option, Icon, url, history }) {
     closeSidebar();
     history.push(url);
   };
-
   return (
     <div className="sidebarOptions" onClick={() => goto(url)}>
       {Icon && <Icon className="sidebarOptions_icon" />}

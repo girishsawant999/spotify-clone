@@ -11,19 +11,6 @@
   justify-content: space-between;
   align-items: center;
 }
-.body h2 {
-  margin: 15px 0px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.body .trackCardsContainer {
-  display: flex;
-  justify-content: space-between;
-  overflow-x: auto;
-  border-radius: 10px;
-  scroll-behavior: smooth;
-}
 .body__search {
   flex: auto;
   display: flex;

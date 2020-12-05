@@ -5,13 +5,13 @@ import "./playlistCover.css";
 function PlaylistCover({ playlist }) {
   return (
     <div>
-      <div class="playlist__cover">
-        <div class="playlist__image">
+      <div className="playlist__cover">
+        <div className="playlist__image">
           <LazyLoadImage src={playlist?.images[0]?.url} alt="" />
         </div>
-        <div class="playlist_details">
-          <h2 class="playlist__title">{playlist?.name}</h2>
-          <p class="playlist__description">{playlist?.description} </p>
+        <div className="playlist_details">
+          <h2 className="playlist__title">{playlist?.name}</h2>
+          <p className="playlist__description">{playlist?.description} </p>
         </div>
       </div>
     </div>

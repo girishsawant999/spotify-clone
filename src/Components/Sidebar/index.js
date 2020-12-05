@@ -23,7 +23,7 @@ function Sidebar({ history }) {
     <div id="sidebar" className="sidebar m-hidden">
       <svg
         viewBox="0 0 1134 340"
-        class="spotify-logo--text"
+        className="spotify-logo--text"
         onClick={() => history.push("/")}
       >
         <title>Spotify</title>
@@ -37,24 +37,36 @@ function Sidebar({ history }) {
         <CloseIcon />
       </span>
 
-      <SidebarOptions Option="Home" Icon={HomeIcon} url="/" />
-      <SidebarOptions Option="Search" Icon={SearchIcon} url="/" />
-      <SidebarOptions Option="Your Library" Icon={LibraryMusicIcon} url="/" />
+      <SidebarOptions key="Home" Option="Home" Icon={HomeIcon} url="/" />
+      <SidebarOptions key="Search" Option="Search" Icon={SearchIcon} url="/" />
+      <SidebarOptions
+        key="Your Library"
+        Option="Your Library"
+        Icon={LibraryMusicIcon}
+        url="/"
+      />
 
       <br />
       <strong className="sidebar_title">PLAYLIST</strong>
       <hr />
 
-      {playlists?.items?.map((playlist) => (
-        <SidebarOptions Option={playlist.name} url="/" />
+      {playlists?.items?.map((playlist, index) => (
+        <SidebarOptions
+          key={`${playlist.name}-${index}`}
+          Option={playlist.name}
+          url="/"
+        />
       ))}
 
       <br />
       <strong className="sidebar_title">CATEGORIES</strong>
       <hr />
 
-      {categories?.items?.map((category) => (
-        <SidebarOptions Option={category.name} />
+      {categories?.items?.map((category, index) => (
+        <SidebarOptions
+          key={`${category.name}-${index}`}
+          Option={category.name}
+        />
       ))}
     </div>
   );
