@@ -8,13 +8,12 @@
   border-radius: 0px 0px 15px 15px;
   border-bottom: 1px solid #3a3a3a;
   z-index: 1;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.7);
+  box-shadow: none;
   transition: 200ms ease-in-out;
 }
 .search_suggestions_open {
   border-radius: 15px 15px 0px 0px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7),
-    0px 10px 5px 0px rgba(0, 0, 0, 0.7);
+  box-shadow: none;
 }
 .hidden {
   display: none;

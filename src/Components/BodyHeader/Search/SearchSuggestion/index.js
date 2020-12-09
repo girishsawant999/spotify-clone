@@ -1,3 +1,4 @@
+import List from "@material-ui/core/List";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { useEffect, useState } from "react";
 import { useDataLayerValue } from "../../../../DataLayer";
@@ -5,7 +6,7 @@ import "./style.css";
 import Track from "./Track";
 
 function SearchSuggestion(props) {
-  const [{ spotify }, dispatch] = useDataLayerValue();
+  const [{ spotify }] = useDataLayerValue();
   const [showSuggestions, setshowSuggestions] = useState(false);
   const [tracks, settracks] = useState([]);
 
@@ -70,8 +71,10 @@ function SearchSuggestion(props) {
       </form>
       {showSuggestions && (
         <div className="search_suggestions">
-          {tracks.length !== 0 &&
-            tracks.map((track) => <Track track={track} dispatch={dispatch} />)}
+          <List component="nav" aria-labelledby="nested-list-subheader">
+            {tracks.length !== 0 &&
+              tracks.map((track) => <Track track={track} />)}
+          </List>
         </div>
       )}
     </div>

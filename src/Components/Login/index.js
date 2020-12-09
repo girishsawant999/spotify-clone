@@ -14,8 +14,11 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontWeight: "800",
     boxShadow: "0 3px 5px 2px rgba(29, 185, 84, .3)",
+    transition: "200ms",
     "&:hover": {
-      backgroundColor: "#159642",
+      padding: "19px",
+      boxShadow: "0 3px 3px 1px rgba(29, 185, 84, .3)",
+      backgroundColor: "#1db954",
     },
   },
 }));
