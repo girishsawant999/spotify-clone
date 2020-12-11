@@ -10,7 +10,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { withRouter } from "react-router-dom";
 import { useDataLayerValue } from "../../../DataLayer";
+import { checkLocalStorageCompatibility } from "../../../Utils";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function User(props) {
+function User({ history }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -38,13 +40,19 @@ export default function User(props) {
   };
 
   const logout = () => {
-    localStorage.removeItem("_token");
+    checkLocalStorageCompatibility() && localStorage.removeItem("_token");
+    history.push("/");
     dispatch({ token: null });
+  };
+
+  const gotoMyProfile = () => {
+    history.push("/my-profile");
   };
 
   const handleClose = (event) => {
     console.log("event.target", event.target.id);
     if (event.target.id === "logout") logout();
+    if (event.target.id === "my-profile") gotoMyProfile();
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
@@ -104,7 +112,9 @@ export default function User(props) {
                   onKeyDown={handleListKeyDown}
                 >
                   <Divider variant="middle" />
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem id="my-profile" onClick={handleClose}>
+                    Profile
+                  </MenuItem>
                   {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
                   <Divider variant="middle" />
                   <MenuItem id="logout" onClick={handleClose}>
@@ -119,3 +129,5 @@ export default function User(props) {
     </div>
   );
 }
+
+export default withRouter(User);
