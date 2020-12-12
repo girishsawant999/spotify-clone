@@ -1,54 +1,54 @@
-import { ButtonBase, Grid, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import React from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { withRouter } from "react-router-dom";
-import Disc from "../../Assets/images/disc.svg";
+import { ButtonBase, Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { withRouter } from 'react-router-dom';
+import Disc from '../../Assets/images/disc.svg';
 
 const useStyles = makeStyles((theme) => ({
   buttonBase: {
-    margin: "0px 5px",
-    borderRadius: "10px",
+    margin: '0px 5px',
+    borderRadius: '10px',
   },
   trackcard: {
-    height: "fit-content",
-    width: "10vw",
-    padding: "20px",
-    backgroundColor: "hsl(0deg 0% 16%)",
-    position: "relative",
-    minWidth: "150px",
-    borderRadius: "inherit",
+    height: 'fit-content',
+    width: '10vw',
+    padding: '20px',
+    backgroundColor: 'hsl(0deg 0% 16%)',
+    position: 'relative',
+    minWidth: '150px',
+    borderRadius: 'inherit',
   },
   track_img: {
-    width: "inherit",
-    marginBottom: "10px",
-    height: "150px",
-    minWidth: "150px",
-    background: "#00000024",
+    width: 'inherit',
+    marginBottom: '10px',
+    height: '150px',
+    minWidth: '150px',
+    background: '#00000024',
     backgroundImage: `url(${Disc})`,
-    backgroundSize: "100% 100%",
-    boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+    backgroundSize: '100% 100%',
+    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
   },
 
   track_img_img: {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
 
   playlist_title: {
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-    textOverflow: "ellipsis",
-    marginBottom: "10px",
-    fontWeight: "bold",
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    marginBottom: '10px',
+    fontWeight: 'bold',
   },
 
   playlist_desc: {
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-    textOverflow: "ellipsis",
-    fontSize: "x-small",
-    marginBottom: "5px",
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    fontSize: 'x-small',
+    marginBottom: '5px',
   },
 }));
 
@@ -62,8 +62,7 @@ function PlaylistCard({ playlist, history }) {
   return (
     <ButtonBase
       className={classes.buttonBase}
-      onClick={() => gotoPlaylistView(playlist)}
-    >
+      onClick={() => gotoPlaylistView(playlist)}>
       <Grid className={classes.trackcard}>
         <Grid className={classes.track_img}>
           {playlist?.images[0]?.url && (

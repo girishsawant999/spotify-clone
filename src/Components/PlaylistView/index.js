@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useDataLayerValue } from "../../DataLayer";
-import BodyHeader from "../BodyHeader";
-import PlaylistCover from "../PlaylistCover";
-import TrackRow from "../TrackRow";
-import "./playListView.css";
+import React, { useEffect, useState } from 'react';
+import { useDataLayerValue } from '../../DataLayer';
+import BodyHeader from '../BodyHeader';
+import PlaylistCover from '../PlaylistCover';
+import TrackRow from '../TrackRow';
+import './playListView.css';
 
 function PlayListView(props) {
   const {
@@ -30,18 +30,17 @@ function PlayListView(props) {
 
   return (
     <div
-      className="playlist"
+      className='playlist'
       style={
         playlist?.primary_color
           ? {
               background: `#121212 linear-gradient(${playlist.primary_color}, #121212, #000)`,
             }
           : {}
-      }
-    >
+      }>
       <BodyHeader />
       <PlaylistCover playlist={playlist} />
-      <div className="playlist__trackscontainer">
+      <div className='playlist__trackscontainer'>
         {tracks.map(
           (track, index) =>
             track?.track?.preview_url && <TrackRow key={index} track={track} />

@@ -1,16 +1,16 @@
-import Slider from "@material-ui/core/Slider";
-import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
-import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
-import RepeatIcon from "@material-ui/icons/Repeat";
-import ShuffleIcon from "@material-ui/icons/Shuffle";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import VolumeOffIcon from "@material-ui/icons/VolumeOff";
-import VolumeUp from "@material-ui/icons/VolumeUp";
-import React, { useCallback, useEffect, useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useDataLayerValue } from "../../DataLayer";
-import "./footer.css";
+import Slider from '@material-ui/core/Slider';
+import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import RepeatIcon from '@material-ui/icons/Repeat';
+import ShuffleIcon from '@material-ui/icons/Shuffle';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import VolumeOffIcon from '@material-ui/icons/VolumeOff';
+import VolumeUp from '@material-ui/icons/VolumeUp';
+import React, { useCallback, useEffect, useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useDataLayerValue } from '../../DataLayer';
+import './footer.css';
 
 let audio = new Audio();
 function Footer(props) {
@@ -44,7 +44,7 @@ function Footer(props) {
   const onAudioEnded = useCallback(
     (audio) => {
       skipTrack(true);
-      audio.removeEventListener("ended", () => onAudioEnded(audio));
+      audio.removeEventListener('ended', () => onAudioEnded(audio));
     },
     [skipTrack]
   );
@@ -53,9 +53,9 @@ function Footer(props) {
     (state) => {
       if (currentTrack) {
         if (state) {
-          audio.src = currentTrack.trackUrl;
+          audio.src = currentTrack.preview_url;
           audio.play();
-          audio.addEventListener("ended", () => onAudioEnded(audio));
+          audio.addEventListener('ended', () => onAudioEnded(audio));
         } else {
           audio.pause();
         }
@@ -71,27 +71,21 @@ function Footer(props) {
   useEffect(() => {
     if (recentTracks?.items?.length > 0) {
       dispatch({
-        currentTrack: {
-          trackUrl: recentTracks?.items[trackIndex]?.track?.preview_url,
-          trackImg:
-            recentTracks?.items[trackIndex]?.track?.album?.images[2]?.url,
-          trackName: recentTracks?.items[trackIndex]?.track?.name,
-          trackArtists: recentTracks?.items[trackIndex]?.track?.artists,
-        },
+        currentTrack: recentTracks?.items[trackIndex]?.track,
       });
     }
     return () => {};
   }, [recentTracks, dispatch, trackIndex]);
 
   useEffect(() => {
-    const element = document.getElementById("player_body");
-    if (currentTrack && element.classList.value.includes("player_body_h100")) {
-      element && element.classList.remove("player_body_h100");
+    const element = document.getElementById('player_body');
+    if (currentTrack && element.classList.value.includes('player_body_h100')) {
+      element && element.classList.remove('player_body_h100');
     } else if (
       !currentTrack &&
-      !element.classList.value.includes("player_body_h100")
+      !element.classList.value.includes('player_body_h100')
     ) {
-      element && element.classList.add("player_body_h100");
+      element && element.classList.add('player_body_h100');
     }
     return () => {};
   }, [currentTrack]);
@@ -103,53 +97,51 @@ function Footer(props) {
   return (
     <>
       {currentTrack && (
-        <div className="footer">
-          <div className="footer__left">
-            <LazyLoadImage src={currentTrack?.trackImg} alt="" />
-            <div className="footer__details">
-              <h4>{currentTrack?.trackName}</h4>
+        <div className='footer'>
+          <div className='footer__left'>
+            <LazyLoadImage src={currentTrack?.album?.images[2]?.url} alt='' />
+            <div className='footer__details'>
+              <h4>{currentTrack?.name}</h4>
               <p>
-                {currentTrack?.trackArtists
-                  .map((artist) => artist.name)
-                  .join(", ")}
+                {currentTrack?.artists.map((artist) => artist.name).join(', ')}
               </p>
             </div>
           </div>
-          <div className="footer__center">
+          <div className='footer__center'>
             <RepeatIcon
-              className={repeat ? "green" : ""}
+              className={repeat ? 'green' : ''}
               onClick={() => setrepeat(!repeat)}
             />
             <SkipPreviousIcon
-              className="medium"
+              className='medium'
               onClick={() => {
                 skipTrack(false);
               }}
             />
             {play ? (
               <PauseCircleFilledIcon
-                className="main"
+                className='main'
                 onClick={() => dispatch({ play: false })}
               />
             ) : (
               <PlayCircleFilledIcon
-                className="main"
+                className='main'
                 onClick={() => dispatch({ play: true })}
               />
             )}
 
             <SkipNextIcon
-              className="medium"
+              className='medium'
               onClick={() => {
                 skipTrack(true);
               }}
             />
             <ShuffleIcon
-              className={shuffle ? "green" : ""}
+              className={shuffle ? 'green' : ''}
               onClick={() => setshuffle(!shuffle)}
             />
           </div>
-          <div className="footer__right">
+          <div className='footer__right'>
             <VolumeOffIcon />
             <Slider
               value={value * 100}
@@ -157,7 +149,7 @@ function Footer(props) {
                 if (audio) audio.volume = newValue / 100;
                 setValue(newValue / 100);
               }}
-              aria-labelledby="continuous-slider"
+              aria-labelledby='continuous-slider'
             />
             <VolumeUp />
           </div>

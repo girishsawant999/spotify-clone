@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import SpotifyWebApi from "spotify-web-api-js";
-import "./App.css";
-import Login from "./Components/Login";
-import Player from "./Components/Player";
-import Spinner from "./Components/Spinner/index";
-import { useDataLayerValue } from "./DataLayer";
-import { getUrlToken } from "./Spotify";
-import { checkLocalStorageCompatibility } from "./Utils";
+import React, { useEffect } from 'react';
+import SpotifyWebApi from 'spotify-web-api-js';
+import './App.css';
+import Login from './Components/Login';
+import Player from './Components/Player';
+import Spinner from './Components/Spinner/index';
+import { useDataLayerValue } from './DataLayer';
+import { getUrlToken } from './Spotify';
+import { checkLocalStorageCompatibility } from './Utils';
 
 const spotify = new SpotifyWebApi();
 
@@ -16,11 +16,11 @@ function App() {
   const initialize = () => {
     const hash = getUrlToken();
     const _token = checkLocalStorageCompatibility()
-      ? localStorage.getItem("_token")
-        ? localStorage.getItem("_token")
+      ? localStorage.getItem('_token')
+        ? localStorage.getItem('_token')
         : hash.access_token
       : hash.access_token;
-    window.location.hash = "";
+    window.location.hash = '';
 
     dispatch({
       spotify,
@@ -32,7 +32,7 @@ function App() {
       });
 
       if (checkLocalStorageCompatibility())
-        localStorage.setItem("_token", _token);
+        localStorage.setItem('_token', _token);
 
       spotify.setAccessToken(_token);
 
@@ -52,7 +52,7 @@ function App() {
             dispatch({ loader: false });
           });
 
-          spotify.getCategories({ country: "IN" }).then((categories) => {
+          spotify.getCategories({ country: 'IN' }).then((categories) => {
             dispatch({
               categories: categories.categories,
             });
@@ -63,7 +63,7 @@ function App() {
             dispatch({
               token: null,
             });
-            localStorage.removeItem("_token");
+            localStorage.removeItem('_token');
           }
         });
     }
@@ -72,7 +72,7 @@ function App() {
   useEffect(initialize, []);
 
   return (
-    <div className="app">
+    <div className='app'>
       {token ? (
         <>
           <Spinner />

@@ -1,30 +1,32 @@
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import React from "react";
-// import "../Body/body.css";
-import PlaylistCard from "../PlaylistCard";
-import RecentTrackCard from "../RecentTrackCard";
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import React, { lazy } from 'react';
+
+const RecentTrackCard = lazy(() =>
+  import(/*RecentTrackCard*/ '../RecentTrackCard')
+);
+const PlaylistCard = lazy(() => import(/*PlaylistCard*/ '../PlaylistCard'));
 
 const useStyles = makeStyles((theme) => ({
   tittle: {
-    margin: "15px 0",
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-    textOverflow: "ellipsis",
-    fontSize: "1.5em",
-    fontWeight: "bold",
+    margin: '15px 0',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    fontSize: '1.5em',
+    fontWeight: 'bold',
   },
   CardsContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    overflowX: "auto",
-    borderRadius: "10px",
-    scrollBehavior: "smooth",
+    display: 'flex',
+    justifyContent: 'space-between',
+    overflowX: 'auto',
+    borderRadius: '10px',
+    scrollBehavior: 'smooth',
   },
   displayInherit: {
-    display: "inherit",
+    display: 'inherit',
   },
 }));
 

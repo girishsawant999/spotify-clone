@@ -1,5 +1,5 @@
 export const checkLocalStorageCompatibility = () => {
-  const test = "test";
+  const test = 'test';
   try {
     localStorage.setItem(test, test);
     localStorage.removeItem(test);

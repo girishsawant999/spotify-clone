@@ -1,11 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import { DataLayer } from "./DataLayer";
-import "./index.css";
-import { initialState, reducer } from "./reducer";
-import * as serviceWorker from "./serviceWorker";
-require("dotenv").config();
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { DataLayer } from './DataLayer';
+import './index.css';
+import { initialState, reducer } from './reducer';
+import * as serviceWorker from './serviceWorker';
+require('dotenv').config();
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +13,7 @@ ReactDOM.render(
       <App />
     </DataLayer>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

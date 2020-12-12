@@ -1,8 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useDataLayerValue } from "../../DataLayer";
-import BodyHeader from "../BodyHeader";
-import CategoryContainer from "../CategoryContainer";
-import "./body.css";
+import React, { lazy, useCallback, useEffect, useState } from 'react';
+import { useDataLayerValue } from '../../DataLayer';
+import './body.css';
+
+const BodyHeader = lazy(() => import(/*BodyHeader*/ '../BodyHeader'));
+const CategoryContainer = lazy(() =>
+  import(/*CategoryContainer*/ '../CategoryContainer')
+);
 
 function Body() {
   const [{ recentTracks, spotify }, dispatch] = useDataLayerValue();
@@ -27,7 +30,7 @@ function Body() {
 
   useEffect(() => {
     dispatch({ loader: true });
-    spotify.getCategories({ country: "IN" }).then((categories) => {
+    spotify.getCategories({ country: 'IN' }).then((categories) => {
       let { items } = categories.categories;
       getCategoryPlaylists(
         items.splice(getRandomInt(0, items.length - 1), 1)[0]
@@ -57,11 +60,11 @@ function Body() {
   };
 
   return (
-    <div className="body">
+    <div className='body'>
       <BodyHeader />
       <CategoryContainer
         category={recentTracks}
-        name={"Recently Played"}
+        name={'Recently Played'}
         type={0}
       />
 

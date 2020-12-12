@@ -35,7 +35,7 @@ body {
   }
 }
 .spinner .loader::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -48,7 +48,7 @@ body {
   border-bottom-left-radius: 50px;
 }
 .spinner .loader::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 50%;

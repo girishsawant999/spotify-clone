@@ -1,13 +1,13 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import "./sidebarOptions.css";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import './sidebarOptions.css';
 
 function SidebarOptions({ Option, index, Icon, url, history }) {
   const closeSidebar = () => {
-    const element = document.getElementById("sidebar");
+    const element = document.getElementById('sidebar');
     if (element) {
-      element.classList.toggle("m-hidden");
-      element.classList.toggle("m-display");
+      element.classList.toggle('m-hidden');
+      element.classList.toggle('m-display');
     }
   };
   const goto = (url) => {
@@ -15,12 +15,12 @@ function SidebarOptions({ Option, index, Icon, url, history }) {
     history.push(url);
   };
   return (
-    <div className="sidebarOptions" onClick={() => goto(url)}>
-      {Icon && <Icon className="sidebarOptions_icon" />}
+    <div className='sidebarOptions' onClick={() => goto(url)}>
+      {Icon && <Icon className='sidebarOptions_icon' />}
       {Icon ? (
         <h4>{Option}</h4>
       ) : (
-        <p className="sidebarOptions_icon">{Option}</p>
+        <p className='sidebarOptions_icon'>{Option}</p>
       )}
     </div>
   );
