@@ -1,5 +1,6 @@
-import React, { lazy, useCallback, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { useDataLayerValue } from '../../DataLayer';
+import { Spinner } from '../Spinner';
 import './body.css';
 
 const BodyHeader = lazy(() => import(/*BodyHeader*/ '../BodyHeader'));
@@ -61,38 +62,40 @@ function Body() {
 
   return (
     <div className='body'>
-      <BodyHeader />
-      <CategoryContainer
-        category={recentTracks}
-        name={'Recently Played'}
-        type={0}
-      />
+      <Suspense fallback={<Spinner />}>
+        <BodyHeader />
+        <CategoryContainer
+          category={recentTracks}
+          name={'Recently Played'}
+          type={0}
+        />
 
-      <CategoryContainer
-        category={cat1?.item?.playlists}
-        name={cat1.name}
-        type={1}
-      />
-      <CategoryContainer
-        category={cat2?.item?.playlists}
-        name={cat2.name}
-        type={1}
-      />
-      <CategoryContainer
-        category={cat3?.item?.playlists}
-        name={cat3.name}
-        type={1}
-      />
-      <CategoryContainer
-        category={cat4?.item?.playlists}
-        name={cat4.name}
-        type={1}
-      />
-      <CategoryContainer
-        category={cat5?.item?.playlists}
-        name={cat5.name}
-        type={1}
-      />
+        <CategoryContainer
+          category={cat1?.item?.playlists}
+          name={cat1.name}
+          type={1}
+        />
+        <CategoryContainer
+          category={cat2?.item?.playlists}
+          name={cat2.name}
+          type={1}
+        />
+        <CategoryContainer
+          category={cat3?.item?.playlists}
+          name={cat3.name}
+          type={1}
+        />
+        <CategoryContainer
+          category={cat4?.item?.playlists}
+          name={cat4.name}
+          type={1}
+        />
+        <CategoryContainer
+          category={cat5?.item?.playlists}
+          name={cat5.name}
+          type={1}
+        />
+      </Suspense>
     </div>
   );
 }
