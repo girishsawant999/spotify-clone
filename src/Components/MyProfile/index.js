@@ -1,7 +1,10 @@
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import Chip from '@material-ui/core/Chip';
+import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -26,6 +29,17 @@ const useStyles = makeStyles((theme) => ({
       background: 'hsl(0deg 0% 15%)',
     },
   },
+  Avatar: {
+    height: '100%',
+    width: '100%',
+  },
+  ProfileIcon: {
+    width: '75%',
+    height: '75%',
+  },
+  Divider: {
+    background: '#1db9546b',
+  },
 }));
 
 function MyProfile({ history }) {
@@ -38,10 +52,9 @@ function MyProfile({ history }) {
   };
 
   const onBackClick = () => {
-    history.push('/');
+    history.goBack();
   };
 
-  console.log('user', user);
   return (
     <Grid container className={classes.MainContainer}>
       <Grid item xs={12}>
@@ -56,25 +69,64 @@ function MyProfile({ history }) {
           </Button>
         </Box>
       </Grid>
-      <Grid item xs={12}>
-        <Typography variant='h2' color='initial'>
-          Coming Soon!
-        </Typography>
-      </Grid>
-      <Box display='none'>
-        <Grid item xs={4}>
-          <Avatar>
+
+      <Grid item xs={12} md={3} justifyContent='center'>
+        <Box
+          display='flex'
+          justifyContent='center'
+          alignItems='center'
+          m='auto'
+          height='30vh'
+          width='30vh'
+          maxWidth='90%'>
+          <Avatar className={classes.Avatar}>
             {user?.images?.length ? (
               <LazyLoadImage src={user?.images[0]} />
             ) : (
-              <PersonOutlineIcon className='body__avatar' />
+              <PersonOutlineIcon className={classes.ProfileIcon} />
             )}
           </Avatar>
+        </Box>
+      </Grid>
+
+      <Hidden mdUp>
+        <Grid item xs={12}>
+          <Box mt={2}>
+            <Divider className={classes.Divider} />
+          </Box>
         </Grid>
-        <Grid item xs={8}>
-          <Typography variant='h3'>{user?.display_name}</Typography>
+      </Hidden>
+
+      {user && (
+        <Grid item xs={12} md={9}>
+          <Box height='100%' width='100%' display='flex' alignItems='flex-end'>
+            <Hidden mdDown>
+              <Box height='100%' mr={2}>
+                <Divider orientation='vertical' className={classes.Divider} />
+              </Box>
+            </Hidden>
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <Typography variant='h3'>{user?.display_name}</Typography>
+              </Grid>
+              <Grid item xs={12}>
+                {user?.followers?.total === 0 ? (
+                  <Chip
+                    size='small'
+                    label={<Typography>No followers</Typography>}
+                  />
+                ) : (
+                  <Chip
+                    size='small'
+                    avatar={<Avatar>{10}</Avatar>}
+                    label={<Typography>followers</Typography>}
+                  />
+                )}
+              </Grid>
+            </Grid>
+          </Box>
         </Grid>
-      </Box>
+      )}
     </Grid>
   );
 }

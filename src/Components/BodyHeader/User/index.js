@@ -48,7 +48,6 @@ function User({ history }) {
   };
 
   const handleClose = (event) => {
-    console.log('event.target', event.target.id);
     if (event.target.id === 'logout') logout();
     if (event.target.id === 'my-profile') gotoMyProfile();
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
