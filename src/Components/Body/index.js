@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { useDataLayerValue } from '../../DataLayer';
-import { Spinner } from '../Spinner';
+import Spinner from '../Spinner';
 import './body.css';
 
 const BodyHeader = lazy(() => import(/*BodyHeader*/ '../BodyHeader'));
