@@ -12,12 +12,12 @@ const MyProfile = lazy(() => import(/*MyProfile*/ './Components/MyProfile'));
 function Routes(props) {
   return (
     <Router>
-      <Suspense fallback={<div>...</div>}>
+      <Suspense fallback={<Spinner loading={true} />}>
         <Sidebar />
       </Suspense>
 
       <div className='routes'>
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<Spinner loading={true} />}>
           <Switch>
             <Route exact path='/' component={Body} />
             <Route path='/playlist/:playlist_id' component={PlayListView} />

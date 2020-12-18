@@ -62,7 +62,7 @@ function Body() {
 
   return (
     <div className='body'>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Spinner loading={true} />}>
         <BodyHeader />
         <CategoryContainer
           category={recentTracks}

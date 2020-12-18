@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     height: '75%',
   },
   Divider: {
-    background: '#1db9546b',
+    background: '#282828',
   },
 }));
 

@@ -3,7 +3,7 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import './App.css';
 import Login from './Components/Login';
 import Player from './Components/Player';
-import Spinner from './Components/Spinner/index';
+import Spinner from './Components/Spinner';
 import { useDataLayerValue } from './DataLayer';
 import { getUrlToken } from './Spotify';
 import { checkLocalStorageCompatibility } from './Utils';

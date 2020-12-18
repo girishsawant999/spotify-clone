@@ -2,9 +2,9 @@ import React from 'react';
 import { useDataLayerValue } from '../../DataLayer';
 import './style.css';
 
-function Spinner(props) {
+function Spinner({ loading }) {
   const [{ loader }] = useDataLayerValue();
-  return loader ? (
+  return loader || loading ? (
     <div className='spinner'>
       <div className='loader'>
         <span></span>
