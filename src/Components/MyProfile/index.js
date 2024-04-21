@@ -12,8 +12,8 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { withRouter } from 'react-router-dom';
 import { useDataLayerValue } from '../../DataLayer';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   MainContainer: {
@@ -42,17 +42,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MyProfile({ history }) {
+function MyProfile() {
   const [{ user }, dispatch] = useDataLayerValue();
   const classes = useStyles();
+    const navigate = useNavigate();
+
 
   const logout = () => {
-    history.push('/');
+    navigate('/');
     dispatch({ action: 'LOGOUT' });
   };
 
   const onBackClick = () => {
-    history.goBack();
+    navigate(-1);
   };
 
   return (
@@ -131,4 +133,4 @@ function MyProfile({ history }) {
   );
 }
 
-export default withRouter(MyProfile);
+export default (MyProfile);

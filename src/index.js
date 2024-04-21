@@ -5,7 +5,6 @@ import { DataLayer } from './DataLayer';
 import './index.css';
 import { initialState, reducer } from './reducer';
 import * as serviceWorker from './serviceWorker';
-require('dotenv').config();
 
 ReactDOM.render(
   <React.StrictMode>

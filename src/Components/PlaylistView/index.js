@@ -4,11 +4,10 @@ import BodyHeader from '../BodyHeader';
 import PlaylistCover from '../PlaylistCover';
 import TrackRow from '../TrackRow';
 import './playListView.css';
+import { useParams } from 'react-router-dom';
 
 function PlayListView(props) {
-  const {
-    match: { params },
-  } = props;
+  const params  = useParams();
   let { playlist_id } = params;
   const [{ spotify }, dispatch] = useDataLayerValue();
   const [playlist, setplaylist] = useState(null);

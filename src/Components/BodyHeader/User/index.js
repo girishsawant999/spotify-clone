@@ -10,9 +10,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { withRouter } from 'react-router-dom';
 import { useDataLayerValue } from '../../../DataLayer';
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   user_popup: {
@@ -33,18 +33,19 @@ function User({ history }) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [{ user }, dispatch] = useDataLayerValue();
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
   const logout = () => {
-    history.push('/');
+    navigate('/');
     dispatch({ action: 'LOGOUT' });
   };
 
   const gotoMyProfile = () => {
-    history.push('/my-profile');
+    navigate('/my-profile');
   };
 
   const handleClose = (event) => {
@@ -123,4 +124,4 @@ function User({ history }) {
   );
 }
 
-export default withRouter(User);
+export default (User);

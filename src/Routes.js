@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Spinner from './Components/Spinner';
 
 const Sidebar = lazy(() => import(/*Sidebar*/ './Components/Sidebar'));
@@ -9,7 +9,7 @@ const PlayListView = lazy(() =>
 );
 const MyProfile = lazy(() => import(/*MyProfile*/ './Components/MyProfile'));
 
-function Routes(props) {
+function AppRoutes(props) {
   return (
     <Router>
       <Suspense fallback={<Spinner loading={true} />}>
@@ -18,15 +18,15 @@ function Routes(props) {
 
       <div className='routes'>
         <Suspense fallback={<Spinner loading={true} />}>
-          <Switch>
-            <Route exact path='/' component={Body} />
-            <Route path='/playlist/:playlist_id' component={PlayListView} />
-            <Route path='/my-profile' component={MyProfile} />
-          </Switch>
+        <Routes>
+            <Route path='/' element={<Body />} />
+            <Route path='/playlist/:playlist_id' element={<PlayListView />} />
+            <Route path='/my-profile' element={<MyProfile />} />
+          </Routes>
         </Suspense>
       </div>
     </Router>
   );
 }
 
-export default Routes;
+export default AppRoutes;

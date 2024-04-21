@@ -3,13 +3,14 @@ import HomeIcon from '@material-ui/icons/Home';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import SearchIcon from '@material-ui/icons/Search';
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { useDataLayerValue } from '../../DataLayer';
 import './sidebar.css';
 import SidebarOptions from './SidebarOptions';
+import { useNavigate } from 'react-router-dom';
 
 function Sidebar({ history }) {
   const [{ playlists, categories }] = useDataLayerValue();
+  const navigate =useNavigate( );
 
   const closeSidebar = () => {
     const element = document.getElementById('sidebar');
@@ -24,7 +25,7 @@ function Sidebar({ history }) {
       <svg
         viewBox='0 0 1134 340'
         className='spotify-logo--text'
-        onClick={() => history.push('/')}>
+        onClick={() => navigate('/')}>
         <title>Spotify</title>
         <path
           fill='currentColor'
@@ -70,4 +71,4 @@ function Sidebar({ history }) {
   );
 }
 
-export default withRouter(Sidebar);
+export default (Sidebar);

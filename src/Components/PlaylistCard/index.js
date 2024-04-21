@@ -2,8 +2,8 @@ import { ButtonBase, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { withRouter } from 'react-router-dom';
 import Disc from '../../Assets/images/disc.svg';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   buttonBase: {
@@ -52,11 +52,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PlaylistCard({ playlist, history }) {
+function PlaylistCard({ playlist }) {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   const gotoPlaylistView = (playlist) => {
-    history.push(`/playlist/${playlist?.id}`);
+    navigate(`/playlist/${playlist?.id}`);
   };
 
   return (
@@ -83,4 +84,4 @@ function PlaylistCard({ playlist, history }) {
   );
 }
 
-export default withRouter(PlaylistCard);
+export default (PlaylistCard);

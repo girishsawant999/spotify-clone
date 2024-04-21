@@ -1,8 +1,10 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import './sidebarOptions.css';
+import { useNavigate } from 'react-router-dom';
 
-function SidebarOptions({ Option, index, Icon, url, history }) {
+function SidebarOptions({ Option, index, Icon, url,  }) {
+    const navigate =useNavigate();
+
   const closeSidebar = () => {
     const element = document.getElementById('sidebar');
     if (element) {
@@ -12,7 +14,7 @@ function SidebarOptions({ Option, index, Icon, url, history }) {
   };
   const goto = (url) => {
     closeSidebar();
-    history.push(url);
+    navigate(url);
   };
   return (
     <div className='sidebarOptions' onClick={() => goto(url)}>
@@ -26,4 +28,4 @@ function SidebarOptions({ Option, index, Icon, url, history }) {
   );
 }
 
-export default withRouter(SidebarOptions);
+export default (SidebarOptions);
