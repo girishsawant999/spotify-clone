@@ -7,7 +7,7 @@ export const authEndPoint = 'https://accounts.spotify.com/authorize';
 
 const redirectUrl = {
   dev: 'http://localhost:3000/',
-  live: 'https://g-spotify.netlify.app/',
+  live: 'https://spotify-musix.netlify.app/',
 };
 
 const clientId = process.env.REACT_APP_CLIENT_ID;
