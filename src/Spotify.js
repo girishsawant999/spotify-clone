@@ -1,5 +1,5 @@
 let activeServer = 'dev';
-if (window.location.host.includes('g-spotify')) {
+if (window.location.host.includes('spotify-musix')) {
   activeServer = 'live';
 }
 
